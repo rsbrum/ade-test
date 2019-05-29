@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiUrl: "https://portalsulweb.com.br/sites/adepizzas-api.com.br/"
 };

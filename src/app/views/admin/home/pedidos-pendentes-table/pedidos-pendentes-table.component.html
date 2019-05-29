@@ -1,0 +1,94 @@
+<div class="row p-2">
+  <div class="col-12 col-sm-12 col-md-8 col-lg-8 mb-2">
+    <input class="form-control mr-sm-2" (input)="searchItems($event.target.value)" type="search" placeholder="Buscar"
+      aria-label="Search">
+  </div>
+
+  <div class="col-6 col-sm-6 col-md-1 col-lg-1  d-flex">
+    <button [disabled]="disabledDelete" (click)="cancelarPedido()" style="height: 40px; border-radius: 5px !important;"
+      class="btn m-auto bg-danger d-flex"><span style="color:white;" class="m-auto oi oi-x"></span></button>
+  </div>
+
+  <div class="col-6 col-sm-6 col-md-1 col-lg-1  d-flex">
+    <button [disabled]="disabledConcluir" (click)="concluirPedido()"
+      style="height: 40px; border-radius: 5px !important;" class="btn m-auto bg-green d-flex"><span style="color:white"
+        class="oi oi-check"></span></button>
+  </div>
+</div>
+
+<div class="row table-row table-header mt-1 p-3 d-none d-sm-none d-md-flex d-lg-flex" style="color: black;">
+
+  <div class="col-1">
+
+  </div>
+
+  <div class="col-1">
+    Id
+  </div>
+
+  <div class="col-2">
+    Nome
+  </div>
+
+  <div class="col-3">
+    Produtos
+  </div>
+
+  <div class="col-2">
+    Status
+  </div>
+
+  <div class="col-3">
+    Endereco
+  </div>
+
+</div>
+
+<div class="row" style="color:black;">
+  <div class="col-12">
+    <div *ngFor="let item of pedidos" class="row table-row p-3">
+      <div class="col-1">
+        <input (click)="selectProduto(item)" type="checkbox" class="form-check-input">
+      </div>
+      <div class="col-11 col-sm-11 col-md-1 col-lg-1">
+        {{item.id}}
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-2 col-lg-2">
+        {{item.user_name["name"]}}
+      </div>
+      <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+        <span *ngFor='let produto of item["produtos"]'>
+          <span>
+            {{produto.nome}} - <span style="font-weight: bold;">{{produto.quantidade}}</span>
+          </span>
+          <br>
+          <span *ngIf="produto.sabores">
+            <span style="font-weight: bold;">Sabores: </span>
+            <span style="font-size: 14px;" *ngFor="let sabor of produto.sabores_info">
+              {{sabor.nome}},
+            </span>
+          </span>
+          <br>
+          <span *ngIf="produto.opcional">
+            <span style="font-weight: bold;">Opcionais: </span>
+            <span style="font-size: 14px;" *ngFor="let opcional of produto.opcionais_info">
+              {{opcional.nome}},
+            </span>
+          </span>
+          <br>
+          <div class="w-100" style="border-bottom: 1px solid black"></div>
+        </span>
+      </div>
+      <div class="col-12 col-sm-12 col-md-2 col-lg-2">
+        <span *ngIf="item.status === 'Pendente'" class="badge badge-warning">Pendente</span>
+        <span *ngIf="item.status === 'Cancelado'" class="badge badge-danger">Cancelado</span>
+        <span *ngIf="item.status === 'Concluido'" class="badge badge-success">Concluido </span>
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+        {{item.endereco}}
+      </div>
+    </div>
+  </div>
+</div>

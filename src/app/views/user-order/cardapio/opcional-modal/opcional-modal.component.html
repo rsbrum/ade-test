@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <button class="btn" style="float: right;" [mat-dialog-close]="true">x</button>
+    </div>
+  </div>
+
+  <div *ngIf="data.sabores" class="row">
+    <div *ngFor="let saborRow of sabor_quantidade; let i=index" class="col-12 col-sm-12 col-md-12 col-lg-12">
+      <label for="">Sabor {{i + 1}}</label>
+      <select class="form-control">
+        <option value="" selected disabled hidden>Escolha um sabor</option>
+        <option *ngFor="let sabor of sabores" [value]="sabor" (click)="selectSabor(sabor, i)">{{sabor.nome}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div *ngIf="data.opcional" class="row">
+    <div class="col-12 ">
+      <h3>Opcionais</h3> <br>
+    </div>
+
+    <div *ngFor="let opcional of opcionais" class="col-12 col-sm-12 col-md-6 col-lg-6">
+      <div class="col-12 table-row">
+        <input (click)="selectOpcional(item)" type="checkbox" class="form-check-input">
+        <span>opcional.nome</span> <br>
+        <span style="font-size:12px;">opcional.descricao</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <button class="float-right mt-3 btn-dark"(click)="addToCart()">ADICIONAR</button>
+    </div>
+  </div>
+</div>

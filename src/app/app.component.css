@@ -1,0 +1,120 @@
+main {
+    height: 100%;
+}
+
+header {
+    height: 60px;
+    z-index: 1;
+    transition: 1s;
+    color: black;
+}
+
+#banner {
+    background-image: url('../assets/index/pizza2.jpg') ;
+    height: 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+/* CARDAPIO */
+#cardapio {
+    min-height: 1000px;
+    height: auto;
+    background-image: url('../assets/index/paper-texture.jpg');
+    background-size: 100% 100%;
+}
+
+.cardapio-item {
+    height: 400px;
+    background: white;
+}
+
+.cardapio-item-head {
+    height: 60%;
+}
+
+.cardapio-item-info {
+    height: 40%;
+}
+
+.cardapio-item-btn {
+    height: 40px;
+    width: 100px;
+    color: white;
+    float: right;
+}
+
+/* end CARDAPIO */
+
+.bg-green {
+    background: rgb(6, 137, 69);
+}
+
+/* HEADER */
+#collapse-menu {
+    transition: 0.5s;
+    height: 0px;
+    overflow: hidden;
+}
+
+#collapse-menu.show-menu {
+    transition: 0.5s;
+    height: 100px;
+    overflow: show;
+}
+
+#collapse-menu.show-menu li{
+    display: inline-block;
+}
+
+.border-menu {
+    border-color: rgba(234,234,234,.5);
+    border-bottom-width: 1px;
+    border-top-width: 0;
+    border-bottom-style: solid;
+    border-top-style: solid;
+}
+
+.header-top {
+    background: rgba(0,0,0,0.0);
+    transition: 1s;
+    height: 60px;
+    position: absolute;
+}
+
+.nav a{
+    color: white;
+}
+
+.header-scrolled{
+    background: white;
+    transition: 1s;
+    height: 55px;
+}
+
+.hide-menu {
+    max-height: 0px;
+}
+
+.header-scrolled a{
+    color: black;
+}
+
+/* end HEADER */
+
+@media only screen and (max-width: 1999px) {
+    #banner {
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    .cardapio-item-head {
+        height: 40%;
+    }
+
+    .cardapio-item-info {
+        height: 60%;
+    }
+}

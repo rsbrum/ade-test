@@ -1,0 +1,27 @@
+#container {
+    height: 100%;
+    width: 100%;
+
+}
+
+.header-scrolled {
+    background: rgb(6, 137, 69);
+    position: fixed;
+    top: 0;
+    z-index: 1019;
+    height: 55px;
+    width: 100%;
+    transition: 1s;
+
+}
+
+.header-top {
+    width: 100%;
+    position: absolute;
+    transition: 1s;
+    border-bottom: 1px solid rgba(0,0,0,0.1)
+}
+
+#header {
+    height: 55px;
+}

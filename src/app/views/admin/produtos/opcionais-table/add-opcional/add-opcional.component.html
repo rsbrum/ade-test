@@ -1,0 +1,53 @@
+<div class="container-fluid">
+    <form [formGroup]="opcionalForm">
+      <div class="row">
+        <div class="col-12">
+          <button class="btn" style="float: right;" [mat-dialog-close]="true">x</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+          <label for="">Nome</label>
+          <input type="text" class="form-control" formControlName="nome">
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+          <label for="">Produto codigo</label>
+          <input type="text" class="form-control" formControlName="produto_id">
+        </div>
+      </div>
+
+
+      <div class="row mt-2">
+
+        <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+          <label for="">Adicional</label>
+          <input type="number" class="form-control" formControlName="adicional">
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+          <label for="">Status</label>
+          <select class="form-control" id="exampleFormControlSelect1" formControlName="status">
+            <option *ngFor="let stat of status" [value]="stat.value" >{{stat.viewValue}}</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="row mt-1">
+        <div class="col-12">
+          <label>Descricao</label>
+          <textarea class="form-control" formControlName="descricao" rows="3"></textarea>
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-12">
+          <button *ngIf="!clicked" (click)="addOpcional()" class="btn" style="float: right;">Adicionar</button>
+          <div *ngIf="clicked" style="float: right; height: 25px; width: 25px;"><mat-spinner class="mt-2"  [diameter]="25"></mat-spinner></div>
+          <button class="btn mx-2" style="float: right;" [mat-dialog-close]="true">Cancelar</button>
+        </div>
+      </div>
+    </form>
+  </div>

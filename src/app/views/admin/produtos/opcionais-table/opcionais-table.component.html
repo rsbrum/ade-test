@@ -1,0 +1,82 @@
+<div class="row p-2">
+  <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+    <input class="form-control mr-sm-2" (input)="searchItems($event.target.value)" type="search" placeholder="Buscar"
+      aria-label="Search">
+  </div>
+
+  <div class="col-4 col-sm-4 col-md-1 col-lg-1 d-flex">
+    <button (click)="openAdd()" class="btn m-auto"><span class="oi oi-plus "></span></button>
+  </div>
+
+  <div class="col-4 col-sm-4 col-md-1 col-lg-1  d-flex">
+    <button [disabled]="disabledDelete" (click)="openDelete()" class="btn m-auto"><span
+        class="oi oi-trash "></span></button>
+  </div>
+
+  <div class="col-4 col-sm-4 col-md-1 col-lg-1  d-flex">
+    <button [disabled]="disabledEdit" (click)="openEdit()" class="btn m-auto"><span
+        class="oi oi-pencil "></span></button>
+  </div>
+</div>
+
+<div class="row table-row table-header mt-1 p-3">
+  <div class="col-1">
+
+  </div>
+
+  <div class="col-1 col-sm-1 col-md-1 col-lg-1">
+    Id
+  </div>
+
+  <div class="col-4 col-sm-4 col-md-2 col-lg-3 ">
+    Nome
+  </div>
+
+  <div class="col-3 d-none d-xs-none d-sm-none d-md-block d-lg-block">
+    Descricao
+  </div>
+
+  <div class="col-2 d-none d-xs-none d-sm-none d-md-block d-lg-block">
+    Codigo
+  </div>
+
+  <div class="col-1 col-sm-1 col-md-1 col-lg-1">
+    Adicional
+  </div>
+
+  <div class="col-1 d-none d-xs-none d-sm-none d-md-block d-lg-block">
+    Status
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div *ngFor="let item of opcionais" class="row table-row p-3">
+      <div class="col-1">
+        <input (click)="selectProduto(item)" type="checkbox" class="form-check-input">
+      </div>
+      <div class="col-1 col-sm-1 col-md-1 col-lg-1">
+        {{item.id}}
+      </div>
+
+      <div class="col-4 col-sm-4 col-md-2 col-lg-3 ">
+        {{item.nome}}
+      </div>
+
+      <div class="col-3 d-none d-xs-none d-sm-none d-md-block d-lg-block">
+        {{item.descricao}}
+      </div>
+
+      <div class="col-2 d-none d-xs-none d-sm-none d-md-block d-lg-block">
+        {{item.codigo}}
+      </div>
+
+      <div class="col-1 col-sm-1 col-md-1 col-lg-1">
+        {{item.adicional}}
+      </div>
+      <div class="col-1 d-none d-xs-none d-sm-none d-md-block d-lg-block">
+        {{item.status}}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,87 @@
+
+.cardapio-item {
+    height: 400px;
+    background: white; 
+}
+
+.cardapio-item-head {
+    height: 60%;
+}
+
+.cardapio-item-info {
+    height: 40%;
+}
+
+.cardapio-item-btn {
+    height: 40px; 
+    width: 100px;
+    color: white;
+    float: right;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+    .cardapio-item-head {
+        height: 55%;
+    }
+    
+    .cardapio-item-info {
+        height: 45%;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+    .cardapio-item-head {
+        height: 60%;
+    }
+    
+    .cardapio-item-info {
+        height: 40%;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .cardapio-item-head {
+        height: 45%;
+    }
+    
+    .cardapio-item-info {
+        height: 55%;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .cardapio-item-head {
+        height: 45%;
+    }
+    
+    .cardapio-item-info {
+        height: 55%;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .cardapio-item-head {
+        height: 40%;
+    }
+    
+    .cardapio-item-info {
+        height: 60%;
+    }
+}
+
+@media only screen and (min-width: 1365px) {
+    .cardapio-item-head {
+        height: 60%;
+    }
+    
+    .cardapio-item-info {
+        height: 40%;
+    }
+}

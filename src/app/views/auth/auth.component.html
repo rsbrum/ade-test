@@ -1,0 +1,31 @@
+<div class="container-fluid h-100 w-100">
+  <div class="row  h-100">
+    <div class="m-auto col-12 col-sm-12 col-md-12 col-lg-4 shadow p-5 text-center">
+      <p class="mb-3">Para finalizar o pedido, entre com o Facebook!</p>
+      <form [formGroup]="loginForm">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email</label>
+          <input type="email" class="form-control" placeholder="Email" formControlName="email">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Senha</label>
+          <input type="password" class="form-control" formControlName="password" placeholder="Senha">
+        </div>
+        <button class="btn btn-dark mb-1" (click)="login()">Entrar</button>
+        <button (click)="loginFacebook()" class="btn mt-2 shadow d-block m-auto"
+          style="border: 1px solid rgba(0,0,0,0.1)"><img
+            src="http://portalsulweb.com.br/sites/adepizzas.com.br/assets/facebook-icon.png"
+            style="height: 50px; width:50px;" alt=""> ENTRAR COM FACEBOOK</button>
+      </form>
+<!--       <div class="row">
+        <div class="col-12 d-flex">
+          <button class="btn mt-2 shadow d-block m-auto" style="border: 1px solid rgba(0,0,0,0.1)"><img
+              src="../../.../../../assets/facebook-icon.png" style="height: 50px; width:50px;" alt=""> ENTRAR COM
+            FACEBOOK</button>
+        </div>
+      </div> -->
+
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,23 @@
+#banner {
+    background-image: url('../../../../assets/index/pizza2.jpg') ;
+    height: 500px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+#logo-banner {
+    height: 80%; width: 30%
+}
+
+@media only screen and (max-width: 1999px) {
+    #banner {
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    #logo-banner {
+        height: 80%; width: 100%
+    }
+}

@@ -1,0 +1,76 @@
+<div class="col-3 col-sm-3 col-md-3 col-lg-3">
+  <img src="http://portalsulweb.com.br/sites/adepizzas.com.br/assets/index/logo.png" style="height:55px; width:75px;" alt="">
+</div>
+
+<div class="col-9 col-sm-9 col-md-6 col-lg-6">
+<!--   <ul class="nav justify-content-center mt-1 d-none d-sm-none d-md-flex d-lg-flex d-xl-flex">
+    <li class="nav-item">
+      <a class="nav-link" href="#">Inicio</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Cardapio</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Local</a>
+    </li>
+  </ul> -->
+
+  <div class="row justify-content-end">
+    <div class="col-12 mr-1">
+      <button (click)="openDialog()" class="btn btn-primary d-block d-xs-block d-sm-block d-md-none d-lg-none mt-1 mb-1"
+        style="background: rgba(0,0,0,0.9); color: white; width: 70px; margin-top: 5px; float: right; margin-right: 5px;"><span
+          class="oi oi-cart"></span>
+        <span class="bg-red rounded ml-2" style="padding: 3px;">{{cartSpan}}</span>
+      </button>
+    </div>
+
+<!--     <div class="col-4">
+       <button (click)="toggleMenu()" id="toggle-menu"
+        class="btn btn-primary d-block d-xs-block d-sm-block d-md-none d-lg-none mt-1 mb-1 " style="float: right;">
+        <span class="oi oi-menu"></span>
+      </button>
+    </div> -->
+
+  </div>
+
+
+</div>
+
+<div class="d-xs-none d-sm-none d-md-none d-none d-lg-block col-lg-3">
+  <button (click)="openDialog()" class="btn"
+    style="background: rgba(0,0,0,0.9); color: white; width: 70px; margin-left: 80%; margin-top: 5px;"><span
+      class="oi oi-cart"></span>
+    <span class="bg-red rounded ml-2" style="padding: 3px;">{{cartSpan}}</span>
+  </button>
+
+</div>
+
+<div class="col-12">
+  <div id="collapse-menu" class="row bg-danger">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-12 text-center">
+          LINK1
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 text-center">
+          LINK2
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 text-center">
+          LINK2
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 text-center">
+          LINK3
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

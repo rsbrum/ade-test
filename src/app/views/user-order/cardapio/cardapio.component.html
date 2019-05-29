@@ -1,0 +1,40 @@
+<div id="cardapio" class="row justify-content-center pb-3">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-11">
+    <mat-tab-group class="mt-1">
+
+      <mat-tab label="Pizzas">
+        <div class="container-fluid">
+          <div class="row mt-2">
+            <div *ngFor="let produto of produtos" class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3 mt-4"
+              style="max-height: 400px;">
+              <app-cardapio-item [itemInfo]='produto'></app-cardapio-item>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="Pasteis">
+        <div class="container-fluid">
+          <div class="row mt-2">
+            <div *ngFor="let produto of pasteis" class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3 mt-4"
+              style="max-height: 400px;">
+              <app-cardapio-item [itemInfo]='produto'></app-cardapio-item>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="Cervejas"> Content 3 </mat-tab>
+      <mat-tab label="Espumantes"> Content 4 </mat-tab>
+      <mat-tab label="Refrigerantes"> Content 3 </mat-tab>
+      <mat-tab label="Bebidas"> Content 3 </mat-tab>
+      <mat-tab label="Bebidas"> Content 3 </mat-tab>
+    </mat-tab-group>
+
+    <!--       <div *ngFor="let produto of produtos" class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3 mt-4" style="max-height: 400px;">
+        <app-cardapio-item [itemInfo]='produto'></app-cardapio-item>
+      </div>
+ -->
+
+  </div>
+</div>

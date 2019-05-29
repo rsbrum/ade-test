@@ -1,0 +1,29 @@
+#collapse-menu {
+    transition: 0.5s;
+    height: 0px;
+    overflow: hidden;
+}
+
+#collapse-menu.show-menu {
+    transition: 0.5s;
+    height: 100px;
+    overflow: show;
+}
+
+#collapse-menu.show-menu li{
+    display: inline-block;
+}
+
+#collapse-menu.show-menu {
+    transition: 0.5s;
+    height: 100px;
+    overflow: show;
+}
+
+#collapse-menu.show-menu li{
+    display: inline-block;
+}
+
+.nav-link {
+    color: white;
+}
