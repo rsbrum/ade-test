@@ -11,6 +11,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class CallbackComponent implements OnInit {
 
   apiUrl = environment.apiUrl;
+  clicked: Boolean = false;
 
   pedidoForm = new FormGroup({
     rua: new FormControl(''),
@@ -34,14 +35,17 @@ export class CallbackComponent implements OnInit {
   }
 
   callback(): void {
+    this.clicked = true;
+
     var url = window.location.href;
     var str = url.split('=')[1];
-    console.log(url);
     str = str.split('&')[0];
+
     var data = { "code": str }
 
     this._http.post(this.apiUrl + '/api/auth/callback', data).subscribe(
       res => {
+
         var user_id = res["user"]["id"];
         var produtos = JSON.parse(localStorage.getItem('cart-items'));
         var value = 0;
@@ -62,16 +66,19 @@ export class CallbackComponent implements OnInit {
 
         this._pedidos.addPedido(data).subscribe(
           res => {
+            this.clicked = false;
             window.location.href = "https://ade-pizzas.herokuapp.com/";
             localStorage.removeItem('cart-items');
           },
           err => {
+            this.clicked = false;
             console.log(err)
           }
         )
 
       },
       err => {
+        this.clicked = false;
         console.log(err);
       }
     );
