@@ -36,6 +36,7 @@ export class CallbackComponent implements OnInit {
   callback(): void {
     var url = window.location.href;
     var str = url.split('=')[1];
+    console.log(url);
     str = str.split('&')[0];
     var data = { "code": str }
 
@@ -61,7 +62,7 @@ export class CallbackComponent implements OnInit {
 
         this._pedidos.addPedido(data).subscribe(
           res => {
-            window.location.href = "https://portalsulweb.com.br/sites/adepizzas.com.br/";
+            window.location.href = "https://ade-pizzas.herokuapp.com/";
             localStorage.removeItem('cart-items');
           },
           err => {

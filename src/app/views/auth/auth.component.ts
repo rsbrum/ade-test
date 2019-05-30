@@ -47,12 +47,11 @@ export class AuthComponent implements OnInit {
       res => {
       /*   window.location.href = res["target_url"]; */
         var url = res["target_url"];
-        console.log(url);
 
         var str = url.split('=')[1];
         str = str.split('&')[0];
 
-        /* window.location.href = url; */
+        window.location.href = url;
       },
       err => {
         console.log(err);
