@@ -77,3 +77,4 @@ export class CallbackComponent implements OnInit {
   }
 
 }
+http://localhost:4200/callback/?#access_token=EAAPyYcFPgDkBAEfzEx8cQHg5j2vgriSVVS16Rrej0MtgIPAmvY36tx0bLU0AP9DSR9sUEwsyyphayNele1PZBW5PUned6thndIt0dzZAYvXnEFvKnRpgPOZB1Mr1compZCSmbU6d5AsTZBuO3nZAQAHWnLarR8JDZC6fM6utnlMDwZDZD&data_access_expiration_time=1566888902&expires_in=5183727
