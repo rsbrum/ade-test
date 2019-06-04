@@ -50,7 +50,7 @@ export class OpcionalModalComponent implements OnInit {
     } else {
       this.opcionais_pedido.push(item);
     }
-    console.log(this.opcionais_pedido);
+
   }
 
   addToCart(): void {
@@ -58,7 +58,7 @@ export class OpcionalModalComponent implements OnInit {
     this.data["opcionais_info"] = this.opcionais_pedido;
     this._cartService.addItem(this.data);
     this.updateCartHeader();
-    this.dialogRef.close();
+    this.dialogRef.close('success');
   }
 
   updateCartHeader(): void {

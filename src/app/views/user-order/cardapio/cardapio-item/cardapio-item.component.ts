@@ -47,15 +47,13 @@ export class CardapioItemComponent implements OnInit {
 
   btnAction() {
     var opcional = parseInt(this.itemInfo.opcional);
-    console.log(opcional);
+
     switch (opcional) {
       case 1: {
-        console.log('open modal')
         this.openOpcional();
         break;
       }
       case 0: {
-        console.log('add to cart')
         this.addToCart();
         break;
       }
@@ -71,7 +69,13 @@ export class CardapioItemComponent implements OnInit {
       data: this.itemInfo
     });
 
-    dialogRef.afterClosed().subscribe(result => { });
+    dialogRef.afterClosed().subscribe(result => {
+
+      if(result === 'success'){
+        this.isInCart = true;
+      }
+
+    });
   }
 
 

@@ -23,10 +23,11 @@
 </div>
  -->
 
-<div class="shadow" style="display: flex; flex-direction: column;  height: 350px; max-height: 400px; background: white;">
+<div class="shadow"
+  style="display: flex; flex-direction: column;  height: 350px; max-height: 400px; background: white;">
   <div class="" style="flex: 1.5; background-image: url('http://portalsulweb.com.br/sites/adepizzas.com.br/assets/index/pizza (1).jpg');  background-repeat: no-repeat;
   background-size: 100% 100%;">
-<!--     <img style="   width: 100%;
+    <!--     <img style="   width: 100%;
     height: 100%;" src="http://portalsulweb.com.br/sites/adepizzas.com.br/assets/index/pizza (1).jpg" alt=""> -->
   </div>
 
@@ -41,8 +42,10 @@
     </div>
 
     <div style="flex: 1;">
-      <button class="btn bg-dark shadow cardapio-item-btn " style="float: right;" (click)="btnAction()"><span
-        class="oi oi-plus"></span></button>
+      <button *ngIf="!isInCart"class="btn bg-dark shadow cardapio-item-btn " style="float: right;" (click)="btnAction()"><span
+          class="oi oi-plus"></span></button>
+      <button *ngIf="isInCart" class="btn bg-green shadow cardapio-item-btn " style="float: right;" (click)="btnAction()"><span
+          class="oi oi-plus"></span></button>
     </div>
   </div>
 </div>
