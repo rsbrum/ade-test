@@ -25,12 +25,12 @@ export class OpcionaisService {
     return this._http.post(this.apiUrl + '/api/opcional', data);
   }
 
-  deleteOpcional() {
-
+  deleteOpcional(id) {
+    return this._http.delete(this.apiUrl + '/api/opcional/' + id);
   }
 
-  editOpcional() {
-
+  editOpcional(data, id) {
+    return this._http.patch(this.apiUrl + '/api/opcional/' + id, data);
   }
 
 }

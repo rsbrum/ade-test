@@ -36,6 +36,9 @@ export class AddSaborModalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (document.documentElement.clientWidth < 1200) {
+      this.dialogRef.updateSize("99%");
+    }
   }
 
   addSabor() {

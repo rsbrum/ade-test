@@ -15,13 +15,17 @@ export class CardapioItemComponent implements OnInit {
   public added: Boolean;
   public isInCart: Boolean = false;
   public showBtn: Boolean = true;
+  public preco;
 
   constructor(
     private cartService: CartService,
     private dialog: MatDialog,
-   ) { }
+   ) {
+
+   }
 
   ngOnInit() {
+    this.preco = this.itemInfo["preco"].replace('.', ',')
     if (this.checkInCart())
       this.isInCart = true;
 

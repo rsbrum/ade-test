@@ -29,8 +29,12 @@ export class SaboresService {
     return this._http.post(this.apiUrl + 'api/sabor', data);
   }
 
-  deleteSabor() {
+  editSabor(data, id) {
+    return this._http.patch(this.apiUrl + 'api/opcional/' + id, data);
+  }
 
+  deleteSabor(id) {
+    return this._http.delete(this.apiUrl + 'api/sabor/' + id);
   }
 
 }

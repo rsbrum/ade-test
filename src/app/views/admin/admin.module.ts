@@ -44,9 +44,9 @@ import {
 import { HomeComponent } from './home/home.component';
 import { ProdutosComponent } from './produtos/produtos.component';
 import { ProdutosTableComponent } from './produtos/produtos-table/produtos-table.component';
-import { AddProdutoModalComponent } from './produtos/add-produto-modal/add-produto-modal.component';
-import { EditProdutoModalComponent } from './produtos/edit-produto-modal/edit-produto-modal.component';
-import { DeleteProdutoModalComponent } from './produtos/delete-produto-modal/delete-produto-modal.component';
+import { AddProdutoModalComponent } from './produtos/produtos-table/add-produto-modal/add-produto-modal.component';
+import { EditProdutoModalComponent } from './produtos/produtos-table/edit-produto-modal/edit-produto-modal.component';
+import { DeleteProdutoModalComponent } from './produtos/produtos-table/delete-produto-modal/delete-produto-modal.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
 import { PedidosTableComponent } from './pedidos/pedidos-table/pedidos-table.component';
 import { AddPedidoModalComponent } from './pedidos/add-pedido-modal/add-pedido-modal.component';
@@ -57,9 +57,13 @@ import { OpcionaisTableComponent } from './produtos/opcionais-table/opcionais-ta
 import { AddOpcionalModalComponent } from './produtos/opcionais-table/add-opcional/add-opcional.component';
 import { SaboresTableComponent } from './produtos/sabores-table/sabores-table.component';
 import { AddSaborModalComponent } from './produtos/sabores-table/add-sabor-modal/add-sabor-modal.component';
+import { EditOpcionalComponent } from './produtos/opcionais-table/edit-opcional/edit-opcional.component';
+import { DeleteOpcionalComponent } from './produtos/opcionais-table/delete-opcional/delete-opcional.component';
+import { DeleteSaborComponent } from './produtos/sabores-table/delete-sabor/delete-sabor.component';
+import { EditSaborComponent } from './produtos/sabores-table/edit-sabor/edit-sabor.component';
 
 @NgModule({
-  declarations: [AdminComponent, HomeComponent, ProdutosComponent, ProdutosTableComponent, AddProdutoModalComponent, EditProdutoModalComponent, DeleteProdutoModalComponent, PedidosComponent, PedidosTableComponent, AddPedidoModalComponent, EditPedidoModalComponent, DeletePedidoModalComponent, PedidosPendentesTableComponent, OpcionaisTableComponent, AddOpcionalModalComponent, SaboresTableComponent, AddSaborModalComponent],
+  declarations: [AdminComponent, HomeComponent, ProdutosComponent, ProdutosTableComponent, AddProdutoModalComponent, EditProdutoModalComponent, DeleteProdutoModalComponent, PedidosComponent, PedidosTableComponent, AddPedidoModalComponent, EditPedidoModalComponent, DeletePedidoModalComponent, PedidosPendentesTableComponent, OpcionaisTableComponent, AddOpcionalModalComponent, SaboresTableComponent, AddSaborModalComponent, EditOpcionalComponent, DeleteOpcionalComponent, DeleteSaborComponent, EditSaborComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -105,7 +109,11 @@ import { AddSaborModalComponent } from './produtos/sabores-table/add-sabor-modal
     AddProdutoModalComponent,
     DeleteProdutoModalComponent,
     AddOpcionalModalComponent,
-    AddSaborModalComponent
+    AddSaborModalComponent,
+    DeleteOpcionalComponent,
+    EditOpcionalComponent,
+    EditSaborComponent,
+    DeleteSaborComponent
   ]
 })
 

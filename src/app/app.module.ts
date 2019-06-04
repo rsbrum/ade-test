@@ -50,7 +50,8 @@ import {
 @NgModule({
   declarations: [
     AppComponent,
-    CallbackComponent
+    CallbackComponent,
+
   ],
   imports: [
     FormsModule,

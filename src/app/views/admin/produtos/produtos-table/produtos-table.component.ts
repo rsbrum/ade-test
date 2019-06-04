@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { EditProdutoModalComponent } from '../edit-produto-modal/edit-produto-modal.component'
-import { AddProdutoModalComponent } from '../add-produto-modal/add-produto-modal.component';
-import { DeleteProdutoModalComponent } from '../delete-produto-modal/delete-produto-modal.component';
+import { EditProdutoModalComponent } from './edit-produto-modal/edit-produto-modal.component'
+import { AddProdutoModalComponent } from './add-produto-modal/add-produto-modal.component';
+import { DeleteProdutoModalComponent } from './delete-produto-modal/delete-produto-modal.component';
 import { Produto } from '@models/produto';
 import { ProdutosService } from '../../../../core/services/produtos.service';
 import { MatSnackBar } from '@angular/material';
@@ -69,6 +69,7 @@ export class ProdutosTableComponent implements OnInit {
       }
 
       this.getProdutos();
+      this.selected = [];
     });
 
   }
@@ -86,6 +87,7 @@ export class ProdutosTableComponent implements OnInit {
       }
 
       this.getProdutos();
+      this.selected = [];
     });
   }
 

@@ -29,19 +29,38 @@
       <div class="col-12 col-sm-12 col-md-4 col-lg-4">
         <label for="">Status</label>
         <select class="form-control" id="exampleFormControlSelect1" formControlName="status">
-          <option *ngFor="let stat of status" [value]="stat.value" >{{stat.viewValue}}</option>
+          <option *ngFor="let stat of status" [value]="stat.value">{{stat.viewValue}}</option>
         </select>
       </div>
 
       <div class="col-12 col-sm-12 col-md-4 col-lg-4">
         <label for="">Tipo</label>
         <select class="form-control" id="exampleFormControlSelect1" formControlName="tipo">
-          <option *ngFor="let tipo of produtosTipo" [value]="tipo" >{{tipo}}</option>
+          <option *ngFor="let tipo of produtosTipo" [value]="tipo">{{tipo}}</option>
         </select>
       </div>
 
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+        <label for="">Sabores</label>
+        <select class="form-control" formControlName="sabores">
+          <option [value]="1">Sim</option>
+          <option [value]="0">Nao</option>
+        </select>
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+        <label for="">Opcional</label>
+        <select class="form-control" formControlName="opcional">
+          <option [value]="1">Sim</option>
+          <option [value]="0">Nao</option>
+        </select>
+      </div>
     </div>
 
+    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+        <label for="">Quantidade de sabores</label>
+        <input type="number" class="form-control" formControlName="quantidade_sabores">
+      </div>
     <div class="row mt-1">
       <div class="col-12">
         <label>Descricao</label>
@@ -52,7 +71,9 @@
     <div class="row mt-2">
       <div class="col-12">
         <button *ngIf="!clicked" (click)="addProduto()" class="btn" style="float: right;">Adicionar</button>
-        <div *ngIf="clicked" style="float: right; height: 25px; width: 25px;"><mat-spinner class="mt-2"  [diameter]="25"></mat-spinner></div>
+        <div *ngIf="clicked" style="float: right; height: 25px; width: 25px;">
+          <mat-spinner class="mt-2" [diameter]="25"></mat-spinner>
+        </div>
         <button class="btn mx-2" style="float: right;">Cancelar</button>
       </div>
     </div>

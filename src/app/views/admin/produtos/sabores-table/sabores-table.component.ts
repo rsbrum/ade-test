@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material';
 import { MatSnackBar } from '@angular/material';
 import { SaboresService } from '@services/sabores.service';
 import { AddSaborModalComponent } from './add-sabor-modal/add-sabor-modal.component';
+import { EditSaborComponent} from './edit-sabor/edit-sabor.component';
+import { DeleteSaborComponent } from './delete-sabor/delete-sabor.component';
 
 @Component({
   selector: 'app-sabores-table',
@@ -55,7 +57,7 @@ export class SaboresTableComponent implements OnInit {
   }
 
   openEdit(): void {
-/*     const dialogRef = this.dialog.open(EditProdutoModalComponent, {
+    const dialogRef = this.dialog.open(EditSaborComponent, {
       height: 'auto',
       width: '50%',
       data: this.selected[0]
@@ -67,11 +69,12 @@ export class SaboresTableComponent implements OnInit {
       }
 
       this.getSabores();
-    }); */
+      this.selected = [];
+    });
   }
 
   openDelete() {
-/*     const dialogRef = this.dialog.open(DeleteProdutoModalComponent, {
+    const dialogRef = this.dialog.open(DeleteSaborComponent, {
       height: 'auto',
       width: 'auto',
       data: this.selected[0]
@@ -79,11 +82,12 @@ export class SaboresTableComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result === 'success') {
-        this.snackBar.open('Produto deletado!', 'Ok', {duration: 3000});
+        this.snackBar.open('Sabor deletado!', 'Ok', {duration: 3000});
       }
 
       this.getSabores();
-    }); */
+      this.selected = [];
+    });
   }
 
   sortBy(key): void {
@@ -145,7 +149,7 @@ export class SaboresTableComponent implements OnInit {
     this.sabores.forEach((item) => {
 
 
-      if (regex.test(item.codigo.toLowerCase())) {
+      if (regex.test(item.nome.toLowerCase())) {
         matchedItems.push(item)
       }
 

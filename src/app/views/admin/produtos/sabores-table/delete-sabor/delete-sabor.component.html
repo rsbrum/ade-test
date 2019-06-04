@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>CUIDADO</h1>
+<div mat-dialog-content>
+  <p>Tem certeza que quer deletar o item {{data.nome}}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]='true' >Cancelar</button>
+  <div *ngIf="clicked"><mat-spinner class="mt-2"  [diameter]="25"></mat-spinner></div>
+  <button (click)="deleteSabor()" *ngIf="!clicked" mat-button  cdkFocusInitial>Deletar</button>
+</div>

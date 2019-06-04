@@ -1,3 +1,9 @@
+<div class="row p-2" style="color: black;">
+  <div class="col-12">
+    <h2 class="">Pedidos</h2>
+  </div>
+</div>
+
 <div class="row p-2">
   <div class="col-12 col-sm-12 col-md-8 col-lg-8 mb-2">
     <input class="form-control mr-sm-2" (input)="searchItems($event.target.value)" type="search" placeholder="Buscar"
@@ -5,11 +11,13 @@
   </div>
 
   <div class="col-6 col-sm-6 col-md-1 col-lg-1  d-flex">
-    <button [disabled]="disabledDelete" (click)="cancelarPedido()" style="height: 40px; border-radius: 5px !important;"class="btn m-auto bg-danger d-flex"><span style="color:white;" class="m-auto oi oi-x"></span></button>
+    <button [disabled]="disabledDelete" (click)="cancelarPedido()" style="height: 40px; border-radius: 5px !important;"
+      class="btn m-auto bg-danger d-flex"><span style="color:white;" class="m-auto oi oi-x"></span></button>
   </div>
 
   <div class="col-6 col-sm-6 col-md-1 col-lg-1  d-flex">
-    <button [disabled]="disabledConcluir" (click)="concluirPedido()" style="height: 40px; border-radius: 5px !important;" class="btn m-auto bg-green d-flex"><span style="color:white"
+    <button [disabled]="disabledConcluir" (click)="concluirPedido()"
+      style="height: 40px; border-radius: 5px !important;" class="btn m-auto bg-green d-flex"><span style="color:white"
         class="m-auto oi oi-check"></span></button>
   </div>
 </div>
@@ -21,7 +29,7 @@
   </div>
 
   <div class="col-1">
-     Id
+    Id
   </div>
 
   <div class="col-2 ">
@@ -37,7 +45,7 @@
   </div>
 
   <div class="col-3">
-    Endereco
+    Entrega
   </div>
 
 </div>
@@ -53,7 +61,7 @@
       </div>
 
       <div class="col-12 col-sm-12 col-md-2 col-lg-2">
-        {{item.user_name["name"]}}
+        {{item.user["name"]}}
       </div>
       <div class="col-12 col-sm-12 col-md-3 col-lg-3">
         <span *ngFor='let produto of item["produtos"]'>
@@ -61,16 +69,14 @@
         </span>
       </div>
       <div class="col-12 col-sm-12 col-md-2 col-lg-2">
-        <span *ngIf="item.status === 'Pendente'"class="badge badge-warning">Pendente</span>
+        <span *ngIf="item.status === 'Pendente'" class="badge badge-warning">Pendente</span>
         <span *ngIf="item.status === 'Cancelado'" class="badge badge-danger">Cancelado</span>
         <span *ngIf="item.status === 'Concluido'" class="badge badge-success">Concluido </span>
       </div>
 
       <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-        {{item.endereco}}
+        {{item.endereco}} - {{item.user["contato"]}}
       </div>
     </div>
   </div>
 </div>
-
-

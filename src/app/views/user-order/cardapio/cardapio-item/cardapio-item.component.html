@@ -1,3 +1,4 @@
+<!--
 <div class="cardapio-item shadow h-100 p-0 pb-sm-0 pb-md-0 pb-lg-1 pb-xl-1">
   <div class="row cardapio-item-head">
     <div class="col-12 h-100">
@@ -16,8 +17,32 @@
     </div>
     <div class="col-4  d-flex">
       <button class="btn bg-dark shadow cardapio-item-btn" (click)="btnAction()"><span class="oi oi-plus"></span></button>
-    <!--   <span style="transition: 1s;"*ngIf="isInCart"class="btn bg-green shadow cardapio-item-btn oi oi-check"></span> -->
     </div>
   </div>
 
+</div>
+ -->
+
+<div class="shadow" style="display: flex; flex-direction: column;  height: 350px; max-height: 400px; background: white;">
+  <div class="" style="flex: 1.5; background-image: url('http://portalsulweb.com.br/sites/adepizzas.com.br/assets/index/pizza (1).jpg');  background-repeat: no-repeat;
+  background-size: 100% 100%;">
+<!--     <img style="   width: 100%;
+    height: 100%;" src="http://portalsulweb.com.br/sites/adepizzas.com.br/assets/index/pizza (1).jpg" alt=""> -->
+  </div>
+
+  <div class="p-2" style="flex: 1; overflow: hidden;">
+    <h4 class="font-weight-bold">{{itemInfo.nome}}</h4>
+    <p style="color: rgb(109, 109, 109)">{{itemInfo.descricao}} </p>
+  </div>
+
+  <div class="p-2" style="flex: 0.5; display:flex;">
+    <div style="flex: 1;">
+      <h3 class="font-weight-bolder">{{preco}}</h3>
+    </div>
+
+    <div style="flex: 1;">
+      <button class="btn bg-dark shadow cardapio-item-btn " style="float: right;" (click)="btnAction()"><span
+        class="oi oi-plus"></span></button>
+    </div>
+  </div>
 </div>

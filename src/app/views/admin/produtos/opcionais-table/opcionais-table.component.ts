@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { MatSnackBar } from '@angular/material';
 import { AddOpcionalModalComponent } from './add-opcional/add-opcional.component';
+import { EditOpcionalComponent } from './edit-opcional/edit-opcional.component';
+import { DeleteOpcionalComponent } from './delete-opcional/delete-opcional.component';
 import { OpcionaisService } from '@services/opcionais.service';
 
 @Component({
@@ -53,10 +55,8 @@ export class OpcionaisTableComponent implements OnInit {
     )
   }
 
-
-
   openEdit(): void {
-    /*     const dialogRef = this.dialog.open(EditProdutoModalComponent, {
+    const dialogRef = this.dialog.open(EditOpcionalComponent, {
           height: 'auto',
           width: '50%',
           data: this.selected[0]
@@ -64,15 +64,17 @@ export class OpcionaisTableComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
           if(result === 'success') {
-            this.snackBar.open('Produto editado!', 'Ok', {duration: 3000});
+
+            this.snackBar.open('Opcional editado!', 'Ok', {duration: 3000});
           }
 
-          this.getSabores();
-        }); */
+          this.getOpcionais();
+          this.selected = [];
+        });
   }
 
   openDelete() {
-    /*     const dialogRef = this.dialog.open(DeleteProdutoModalComponent, {
+        const dialogRef = this.dialog.open(DeleteOpcionalComponent, {
           height: 'auto',
           width: 'auto',
           data: this.selected[0]
@@ -80,11 +82,11 @@ export class OpcionaisTableComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
           if(result === 'success') {
-            this.snackBar.open('Produto deletado!', 'Ok', {duration: 3000});
+            this.snackBar.open('Opcional deletado!', 'Ok', {duration: 3000});
           }
 
-          this.getSabores();
-        }); */
+          this.getOpcionais();
+        });
   }
 
   sortBy(key): void {
@@ -145,8 +147,7 @@ export class OpcionaisTableComponent implements OnInit {
 
     this.opcionais.forEach((item) => {
 
-
-      if (regex.test(item.codigo.toLowerCase())) {
+      if (regex.test(item.nome.toLowerCase())) {
         matchedItems.push(item)
       }
 

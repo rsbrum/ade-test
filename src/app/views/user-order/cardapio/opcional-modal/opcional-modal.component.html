@@ -15,16 +15,16 @@
     </div>
   </div>
 
-  <div *ngIf="data.opcional" class="row">
+  <div *ngIf="data.opcional" class="row mt-2">
     <div class="col-12 ">
-      <h3>Opcionais</h3> <br>
+      <h3>Opcionais</h3>
     </div>
 
     <div *ngFor="let opcional of opcionais" class="col-12 col-sm-12 col-md-6 col-lg-6">
       <div class="col-12 table-row">
-        <input (click)="selectOpcional(item)" type="checkbox" class="form-check-input">
-        <span>opcional.nome</span> <br>
-        <span style="font-size:12px;">opcional.descricao</span>
+        <input (click)="selectOpcional(opcional)" type="checkbox" class="form-check-input">
+        <span>{{opcional.nome}}</span> <br>
+        <span style="font-size:12px;">{{opcional.descricao}}</span>
       </div>
     </div>
 

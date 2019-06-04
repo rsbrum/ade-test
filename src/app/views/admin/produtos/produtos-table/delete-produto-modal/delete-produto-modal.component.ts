@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { Produto } from '../../../../core/models/produto';
-import { ProdutosService } from '../../../../core/services/produtos.service';
+import { Produto } from '../../../../../core/models/produto';
+import { ProdutosService } from '../../../../../core/services/produtos.service';
 
 @Component({
   selector: 'app-delete-produto-modal',
@@ -19,6 +19,9 @@ export class DeleteProdutoModalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (document.documentElement.clientWidth < 1200) {
+      this.dialogRef.updateSize("99%");
+    }
   }
 
   deleteProduto() {

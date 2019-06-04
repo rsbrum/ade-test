@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Produto } from '@models/produto';
-import { ProdutosService } from '../../../../core/services/produtos.service';
+import { ProdutosService } from '../../../../../core/services/produtos.service';
 import { MatDialogRef } from '@angular/material';
 
 @Component({
@@ -35,7 +35,10 @@ export class AddProdutoModalComponent implements OnInit {
     preco: new FormControl(''),
     status: new FormControl(''),
     tipo: new FormControl(''),
-    descricao: new FormControl('')
+    descricao: new FormControl(''),
+    sabores: new FormControl(''),
+    opcional: new FormControl(''),
+    quantidade_sabores: new FormControl(0)
   });
 
   ngOnInit() {

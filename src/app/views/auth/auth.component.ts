@@ -16,11 +16,17 @@ export class AuthComponent implements OnInit {
     password: new FormControl('')
   });
 
+  showLogin = false;
+
   constructor(
     private _auth: AuthService,
     private _router: Router) { }
 
   ngOnInit() {
+  }
+
+  showLoginFunc() {
+    this.showLogin = true;
   }
 
   login() {

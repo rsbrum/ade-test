@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Produto } from '../../../../core/models/produto';
-import { ProdutosService } from '../../../../core/services/produtos.service';
+import { Produto } from '../../../../../core/models/produto';
+import { ProdutosService } from '../../../../../core/services/produtos.service';
 
 @Component({
   selector: 'app-edit-produto-modal',
@@ -55,7 +55,6 @@ export class EditProdutoModalComponent implements OnInit {
       err => {
         console.log(err)
         this.clicked = false;
-
       }
     )
   }

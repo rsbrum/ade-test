@@ -50,6 +50,7 @@ export class OpcionalModalComponent implements OnInit {
     } else {
       this.opcionais_pedido.push(item);
     }
+    console.log(this.opcionais_pedido);
   }
 
   addToCart(): void {

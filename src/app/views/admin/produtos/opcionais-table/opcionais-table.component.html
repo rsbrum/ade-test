@@ -1,4 +1,10 @@
 <div class="row p-2">
+  <div class="col-12">
+    <h2 class="">Opcionais</h2>
+  </div>
+</div>
+
+<div class="row p-2">
   <div class="col-12 col-sm-12 col-md-8 col-lg-8">
     <input class="form-control mr-sm-2" (input)="searchItems($event.target.value)" type="search" placeholder="Buscar"
       aria-label="Search">
@@ -68,7 +74,7 @@
       </div>
 
       <div class="col-2 d-none d-xs-none d-sm-none d-md-block d-lg-block">
-        {{item.codigo}}
+        {{item.produto_codigo}}
       </div>
 
       <div class="col-1 col-sm-1 col-md-1 col-lg-1">

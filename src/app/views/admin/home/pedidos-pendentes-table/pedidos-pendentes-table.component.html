@@ -1,4 +1,10 @@
 <div class="row p-2">
+  <div class="col-12">
+    <h2 class="">Pedidos Pendentes</h2>
+  </div>
+</div>
+
+<div class="row p-2">
   <div class="col-12 col-sm-12 col-md-8 col-lg-8 mb-2">
     <input class="form-control mr-sm-2" (input)="searchItems($event.target.value)" type="search" placeholder="Buscar"
       aria-label="Search">
@@ -55,28 +61,30 @@
       </div>
 
       <div class="col-12 col-sm-12 col-md-2 col-lg-2">
-        {{item.user_name["name"]}}
+        {{item.user["name"]}}
       </div>
       <div class="col-12 col-sm-12 col-md-3 col-lg-3">
         <span *ngFor='let produto of item["produtos"]'>
           <span>
             {{produto.nome}} - <span style="font-weight: bold;">{{produto.quantidade}}</span>
           </span>
-          <br>
-          <span *ngIf="produto.sabores">
+
+          <span *ngIf="produto.sabores === 1">
+            <br>
             <span style="font-weight: bold;">Sabores: </span>
             <span style="font-size: 14px;" *ngFor="let sabor of produto.sabores_info">
               {{sabor.nome}},
             </span>
           </span>
           <br>
-          <span *ngIf="produto.opcional">
+          <span *ngIf="produto.opcional === 1">
             <span style="font-weight: bold;">Opcionais: </span>
             <span style="font-size: 14px;" *ngFor="let opcional of produto.opcionais_info">
               {{opcional.nome}},
             </span>
+            <br>
           </span>
-          <br>
+
           <div class="w-100" style="border-bottom: 1px solid black"></div>
         </span>
       </div>
@@ -87,7 +95,7 @@
       </div>
 
       <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-        {{item.endereco}}
+        {{item.endereco}} - {{item.user['contato']}}
       </div>
     </div>
   </div>
