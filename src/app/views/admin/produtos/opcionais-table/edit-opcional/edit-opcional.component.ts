@@ -33,7 +33,7 @@ export class EditOpcionalComponent implements OnInit {
 
   ngOnInit() {
     if (document.documentElement.clientWidth < 1200) {
-      this.dialogRef.updateSize("99%");
+      this.dialogRef.updateSize("99%", "500px");
     }
     console.log(this.data);
   }

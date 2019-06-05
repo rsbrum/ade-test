@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 import { SaboresService } from '@services/sabores.service';
+import { TIPOS_PRODUTOS} from '@core/models/tipos';
 
 @Component({
   selector: 'app-add-sabor-modal',
@@ -16,12 +17,7 @@ export class AddSaborModalComponent implements OnInit {
     { value: 0, viewValue: "Indisponivel" }
   ]
 
-  tipos =[
-    'Pizza',
-    'Pastel',
-    'Vinho',
-    'Espumante'
-  ]
+  tipos = TIPOS_PRODUTOS;
 
   saborForm = new FormGroup({
     nome: new FormControl(''),
@@ -37,7 +33,7 @@ export class AddSaborModalComponent implements OnInit {
 
   ngOnInit() {
     if (document.documentElement.clientWidth < 1200) {
-      this.dialogRef.updateSize("99%");
+      this.dialogRef.updateSize("99%", "500px");
     }
   }
 

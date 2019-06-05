@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Produto } from '@models/produto';
 import { ProdutosService } from '../../../../../core/services/produtos.service';
 import { MatDialogRef } from '@angular/material';
+import { TIPOS_PRODUTOS} from '@core/models/tipos';
 
 @Component({
   selector: 'app-add-produto-modal',
@@ -11,12 +12,7 @@ import { MatDialogRef } from '@angular/material';
 })
 export class AddProdutoModalComponent implements OnInit {
 
-  produtosTipo = [
-    "Pizza",
-    "Pastel",
-    "Bebida"
-  ]
-
+  produtosTipo = TIPOS_PRODUTOS;
   clicked: Boolean = false;
 
   status = [
@@ -42,8 +38,9 @@ export class AddProdutoModalComponent implements OnInit {
   });
 
   ngOnInit() {
+    console.log(this.produtosTipo)
     if (document.documentElement.clientWidth < 1200) {
-      this.dialogRef.updateSize("99%");
+      this.dialogRef.updateSize("99%", "500px");
     }
   }
 

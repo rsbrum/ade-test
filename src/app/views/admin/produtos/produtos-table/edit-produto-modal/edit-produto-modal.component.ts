@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Produto } from '../../../../../core/models/produto';
 import { ProdutosService } from '../../../../../core/services/produtos.service';
+import { TIPOS_PRODUTOS} from '@core/models/tipos';
 
 @Component({
   selector: 'app-edit-produto-modal',
@@ -11,11 +12,7 @@ import { ProdutosService } from '../../../../../core/services/produtos.service';
 })
 export class EditProdutoModalComponent implements OnInit {
 
-  produtosTipo = [
-    "Pizza",
-    "Pastel",
-    "Bebida"
-  ]
+  produtosTipo = TIPOS_PRODUTOS;
 
   clicked: Boolean = false;
 
@@ -40,7 +37,7 @@ export class EditProdutoModalComponent implements OnInit {
 
   ngOnInit() {
     if (document.documentElement.clientWidth < 1200) {
-      this.dialogRef.updateSize("99%");
+      this.dialogRef.updateSize("99%", "500px");
     }
   }
 
