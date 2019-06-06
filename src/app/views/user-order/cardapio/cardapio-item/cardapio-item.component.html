@@ -25,13 +25,14 @@
 
 <div class="shadow"
   style="display: flex; flex-direction: column;  height: 200px; max-height: 250px; background: white; border-radius: 5px;">
-<!--   <div class="" style="flex: 1.5; background-image: url('http://portalsulweb.com.br/sites/adepizzas.com.br/assets/index/pizza (1).jpg');  background-repeat: no-repeat;
+  <!--   <div class="" style="flex: 1.5; background-image: url('http://portalsulweb.com.br/sites/adepizzas.com.br/assets/index/pizza (1).jpg');  background-repeat: no-repeat;
   background-size: 100% 100%;">
 
   </div> -->
 
   <div class="p-2" style="flex: 10; overflow: hidden;">
-    <h4 style="font-weight: 500 !important; font-weight: 15px !important;"class="font-weight-bold">{{itemInfo.nome}}</h4>
+    <h4 style="font-weight: 500 !important; font-weight: 15px !important;" class="font-weight-bold">{{itemInfo.nome}}
+    </h4>
     <p class="mt-1" style="color: rgb(109, 109, 109)">{{itemInfo.descricao}} </p>
   </div>
 
@@ -41,9 +42,11 @@
     </div>
 
     <div style="flex: 1;">
-      <button *ngIf="!isInCart"class="btn bg-dark shadow cardapio-item-btn " style="float: right; border-radius: 3px !important;" (click)="btnAction()"><span
+      <button *ngIf="!isInCart" class="btn bg-dark shadow cardapio-item-btn "
+        style="float: right; border-radius: 3px !important; width: 50px;" (click)="btnAction()"><span
           class="oi oi-plus"></span></button>
-      <button *ngIf="isInCart" class="btn bg-green shadow cardapio-item-btn " style="float: right; border-radius: 3px !important;" (click)="btnAction()"><span
+      <button *ngIf="isInCart" class="btn bg-green shadow cardapio-item-btn "
+        style="float: right; border-radius: 3px !important;" (click)="btnAction()"><span
           class="oi oi-plus"></span></button>
     </div>
   </div>
