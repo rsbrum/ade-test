@@ -61,9 +61,13 @@ import { EditOpcionalComponent } from './produtos/opcionais-table/edit-opcional/
 import { DeleteOpcionalComponent } from './produtos/opcionais-table/delete-opcional/delete-opcional.component';
 import { DeleteSaborComponent } from './produtos/sabores-table/delete-sabor/delete-sabor.component';
 import { EditSaborComponent } from './produtos/sabores-table/edit-sabor/edit-sabor.component';
+import { CupomComponent } from './home/cupom/cupom.component';
+import { AddCupomModalComponent } from './home/cupom/add-cupom-modal/add-cupom-modal.component';
+import { EditCupomModalComponent } from './home/cupom/edit-cupom-modal/edit-cupom-modal.component';
+import { DeleteCupomModalComponent } from './home/cupom/delete-cupom-modal/delete-cupom-modal.component';
 
 @NgModule({
-  declarations: [AdminComponent, HomeComponent, ProdutosComponent, ProdutosTableComponent, AddProdutoModalComponent, EditProdutoModalComponent, DeleteProdutoModalComponent, PedidosComponent, PedidosTableComponent, AddPedidoModalComponent, EditPedidoModalComponent, DeletePedidoModalComponent, PedidosPendentesTableComponent, OpcionaisTableComponent, AddOpcionalModalComponent, SaboresTableComponent, AddSaborModalComponent, EditOpcionalComponent, DeleteOpcionalComponent, DeleteSaborComponent, EditSaborComponent],
+  declarations: [AdminComponent, HomeComponent, ProdutosComponent, ProdutosTableComponent, AddProdutoModalComponent, EditProdutoModalComponent, DeleteProdutoModalComponent, PedidosComponent, PedidosTableComponent, AddPedidoModalComponent, EditPedidoModalComponent, DeletePedidoModalComponent, PedidosPendentesTableComponent, OpcionaisTableComponent, AddOpcionalModalComponent, SaboresTableComponent, AddSaborModalComponent, EditOpcionalComponent, DeleteOpcionalComponent, DeleteSaborComponent, EditSaborComponent, CupomComponent, AddCupomModalComponent, EditCupomModalComponent, DeleteCupomModalComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -113,7 +117,10 @@ import { EditSaborComponent } from './produtos/sabores-table/edit-sabor/edit-sab
     DeleteOpcionalComponent,
     EditOpcionalComponent,
     EditSaborComponent,
-    DeleteSaborComponent
+    DeleteSaborComponent,
+    AddCupomModalComponent,
+    EditCupomModalComponent,
+    DeleteCupomModalComponent
   ]
 })
 

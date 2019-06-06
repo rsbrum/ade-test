@@ -43,7 +43,7 @@ export class EditProdutoModalComponent implements OnInit {
 
   editProduto(){
     this.clicked = true;
-    console.log(this.data.id);
+
     this._produtos.editProduto(this.editProdutoForm.value, this.data.id).subscribe(
       res => {
         this.clicked = false;

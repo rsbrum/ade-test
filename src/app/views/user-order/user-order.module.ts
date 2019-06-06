@@ -9,7 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { CardapioItemComponent } from './cardapio/cardapio-item/cardapio-item.component';
 import { CartModalComponent } from './cart-modal/cart-modal.component';
 import { FormsModule } from '@angular/forms';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -54,6 +54,7 @@ import { OpcionalModalComponent } from './cardapio/opcional-modal/opcional-modal
   declarations: [UserOrderComponent, CardapioComponent, BannerComponent, FooterComponent, HeaderComponent, CardapioItemComponent, CartModalComponent, CartItemComponent, OpcionalModalComponent],
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     UserOrderRoutingModule,
     MatAutocompleteModule,

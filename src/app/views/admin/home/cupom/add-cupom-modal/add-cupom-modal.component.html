@@ -1,0 +1,43 @@
+<div class="container-fluid" >
+  <form [formGroup]="cupomForm">
+    <div class="row">
+      <div class="col-12">
+        <button class="btn" style="float: right;" [mat-dialog-close]="true">x</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+        <label for="">Codigo</label>
+        <input type="text" class="form-control" formControlName="codigo">
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+        <label for="">Status</label>
+        <select class="form-control" id="exampleFormControlSelect1" formControlName="status">
+          <option *ngFor="let stat of status" [value]="stat.value">{{stat.viewValue}}</option>
+        </select>
+      </div>
+    </div>
+
+
+    <div class="row mt-2">
+
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+        <label for="">Porcentagem</label>
+        <input type="number" class="form-control" formControlName="porcentagem">
+      </div>
+
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-12">
+        <button *ngIf="!clicked" (click)="addCupon()" class="btn" style="float: right;">Adicionar</button>
+        <div *ngIf="clicked" style="float: right; height: 25px; width: 25px;">
+          <mat-spinner class="mt-2" [diameter]="25"></mat-spinner>
+        </div>
+        <button [mat-dialog-close]="true" class="btn mx-2" style="float: right;">Cancelar</button>
+      </div>
+    </div>
+  </form>
+</div>

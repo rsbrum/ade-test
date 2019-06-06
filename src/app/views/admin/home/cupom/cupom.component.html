@@ -1,0 +1,87 @@
+<div class="row p-2" style="color: black;">
+  <div class="col-12">
+    <h2 class="">Cupons</h2>
+  </div>
+</div>
+
+<div class="row p-2">
+  <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+    <input class="form-control mr-sm-2" (input)="searchItems($event.target.value)" type="search" placeholder="Buscar" aria-label="Search">
+  </div>
+
+  <div class="col-4 col-sm-4 col-md-1 col-lg-1 d-flex">
+    <button (click)="openAdd()" class="btn m-auto"><span class="oi oi-plus "></span></button>
+  </div>
+
+  <div class="col-4 col-sm-4 col-md-1 col-lg-1  d-flex">
+    <button [disabled]="disabledDelete" (click)="openDelete()" class="btn m-auto"><span class="oi oi-trash "></span></button>
+  </div>
+
+  <div class="col-4 col-sm-4 col-md-1 col-lg-1  d-flex">
+    <button [disabled]="disabledEdit" (click)="openEdit()" class="btn m-auto"><span class="oi oi-pencil "></span></button>
+  </div>
+</div>
+
+<div class="row p-2 align-content-end">
+  <div class="col-6 col-sm-6 col-md-1 col-lg-1  d-flex">
+    <button [disabled]="disabledCancelar" (click)="cancelarCupom()" style="height: 40px; border-radius: 5px !important;"
+      class="btn m-auto bg-danger d-flex"><span style="color:white;" class="m-auto oi oi-x"></span></button>
+  </div>
+
+  <div class="col-6 col-sm-6 col-md-1 col-lg-1  d-flex">
+    <button [disabled]="disabledAtivar" (click)="ativarCupom()"
+      style="height: 40px; border-radius: 5px !important;" class="btn m-auto bg-green d-flex"><span style="color:white"
+        class="m-auto oi oi-check"></span></button>
+  </div>
+</div>
+
+
+<div class="row table-row table-header mt-1 p-3 d-none d-sm-none d-md-flex d-lg-flex">
+
+  <div class="col-1">
+
+  </div>
+
+  <div class="col-2">
+    Id
+  </div>
+
+  <div class="col-3 ">
+    Codigo
+  </div>
+
+  <div class="col-3">
+    Porcentagem
+  </div>
+
+  <div class="col-3">
+    Status
+  </div>
+
+</div>
+
+<div class="row" style="color:black;">
+  <div class="col-12">
+    <div *ngFor="let item of cupons" class="row table-row p-3">
+      <div class="col-1">
+        <input (click)="selectProduto(item)" type="checkbox" class="form-check-input">
+      </div>
+      <div class="col-11 col-sm-11 col-md-3 col-lg-2">
+        {{item.id}}
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+        {{item.codigo}}
+      </div>
+      <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+        {{item.porcentagem}}%
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+        <span *ngIf="!item.status" class="badge badge-danger">Cancelado</span>
+        <span *ngIf="item.status" class="badge badge-success">Ativo</span>
+      </div>
+
+    </div>
+  </div>
+</div>

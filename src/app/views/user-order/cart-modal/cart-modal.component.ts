@@ -1,9 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { CardapioItem } from '@models/cardapio-item';
-import { CartService } from '@services/cart.service'
-import { AuthService } from '@services/auth.service'
-import { PedidosService } from '@services/pedidos.service'
+import { FormGroup, FormControl } from '@angular/forms';
+import { CartService } from '@services/cart.service';
+import { CupomService } from '@services/cupom.service';
+import { AuthService } from '@services/auth.service';
+import { PedidosService } from '@services/pedidos.service';
 
 @Component({
   selector: 'app-cart-modal',
@@ -15,16 +17,21 @@ export class CartModalComponent implements OnInit {
   public cartItems;
   public total;
 
+  cupomForm = new FormGroup({
+    codigo: new FormControl('')
+  });
+
   constructor(
     public dialogRef: MatDialogRef<CartModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data,
     private _cart: CartService,
     private _auth: AuthService,
-    private _pedidos : PedidosService) { }
+    private _pedidos : PedidosService,
+    private _cupom: CupomService) { }
 
   ngOnInit() {
     if (document.documentElement.clientWidth < 1200) {
-      this.dialogRef.updateSize("99%");
+      this.dialogRef.updateSize("99%", "500px");
     }
 
     this.getCartItems();
@@ -65,6 +72,22 @@ export class CartModalComponent implements OnInit {
 
     this._cart.updateNumberItems(this.cartItems.length);
     this.calcularTotal();
+  }
+
+  applyCupom() {
+    var cupom = this.cupomForm.get('codigo').value;
+    this._cupom.checkValidity(cupom).subscribe(
+      res => {
+        if(res['status']){
+          console.log('valido')
+        } else {
+          console.log('invalido');
+        }
+      },
+      err => {
+        console.log(err)
+      }
+    )
   }
 
   close(): void{
