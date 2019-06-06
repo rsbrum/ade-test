@@ -24,27 +24,26 @@
  -->
 
 <div class="shadow"
-  style="display: flex; flex-direction: column;  height: 350px; max-height: 400px; background: white;">
-  <div class="" style="flex: 1.5; background-image: url('http://portalsulweb.com.br/sites/adepizzas.com.br/assets/index/pizza (1).jpg');  background-repeat: no-repeat;
+  style="display: flex; flex-direction: column;  height: 200px; max-height: 250px; background: white; border-radius: 5px;">
+<!--   <div class="" style="flex: 1.5; background-image: url('http://portalsulweb.com.br/sites/adepizzas.com.br/assets/index/pizza (1).jpg');  background-repeat: no-repeat;
   background-size: 100% 100%;">
-    <!--     <img style="   width: 100%;
-    height: 100%;" src="http://portalsulweb.com.br/sites/adepizzas.com.br/assets/index/pizza (1).jpg" alt=""> -->
+
+  </div> -->
+
+  <div class="p-2" style="flex: 10; overflow: hidden;">
+    <h4 style="font-weight: 500 !important; font-weight: 15px !important;"class="font-weight-bold">{{itemInfo.nome}}</h4>
+    <p class="mt-1" style="color: rgb(109, 109, 109)">{{itemInfo.descricao}} </p>
   </div>
 
-  <div class="p-2" style="flex: 1; overflow: hidden;">
-    <h4 class="font-weight-bold">{{itemInfo.nome}}</h4>
-    <p style="color: rgb(109, 109, 109)">{{itemInfo.descricao}} </p>
-  </div>
-
-  <div class="p-2" style="flex: 0.5; display:flex;">
+  <div class="p-2" style="flex: 3; display:flex; border-top: 1px solid rgba(0,0,0,0.1);">
     <div style="flex: 1;">
       <h3 class="font-weight-bolder">{{preco}}</h3>
     </div>
 
     <div style="flex: 1;">
-      <button *ngIf="!isInCart"class="btn bg-dark shadow cardapio-item-btn " style="float: right;" (click)="btnAction()"><span
+      <button *ngIf="!isInCart"class="btn bg-dark shadow cardapio-item-btn " style="float: right; border-radius: 3px !important;" (click)="btnAction()"><span
           class="oi oi-plus"></span></button>
-      <button *ngIf="isInCart" class="btn bg-green shadow cardapio-item-btn " style="float: right;" (click)="btnAction()"><span
+      <button *ngIf="isInCart" class="btn bg-green shadow cardapio-item-btn " style="float: right; border-radius: 3px !important;" (click)="btnAction()"><span
           class="oi oi-plus"></span></button>
     </div>
   </div>

@@ -4,5 +4,7 @@ export const TIPOS_PRODUTOS = [
   'Pastel',
   'Espumante',
   'Porcao',
-  'Cerveja'
+  'Cerveja',
+  'Suco',
+  'Agua'
 ]

@@ -1,7 +1,8 @@
 
 .cardapio-item {
     height: 400px;
-    background: white; 
+    background: white;
+    border-radius: 5px !important;
 }
 
 .cardapio-item-head {
@@ -13,7 +14,7 @@
 }
 
 .cardapio-item-btn {
-    height: 40px; 
+    height: 40px;
     width: 100px;
     color: white;
     float: right;
@@ -25,7 +26,7 @@
     .cardapio-item-head {
         height: 55%;
     }
-    
+
     .cardapio-item-info {
         height: 45%;
     }
@@ -37,7 +38,7 @@
     .cardapio-item-head {
         height: 60%;
     }
-    
+
     .cardapio-item-info {
         height: 40%;
     }
@@ -48,7 +49,7 @@
     .cardapio-item-head {
         height: 45%;
     }
-    
+
     .cardapio-item-info {
         height: 55%;
     }
@@ -59,7 +60,7 @@
     .cardapio-item-head {
         height: 45%;
     }
-    
+
     .cardapio-item-info {
         height: 55%;
     }
@@ -70,7 +71,7 @@
     .cardapio-item-head {
         height: 40%;
     }
-    
+
     .cardapio-item-info {
         height: 60%;
     }
@@ -80,7 +81,7 @@
     .cardapio-item-head {
         height: 60%;
     }
-    
+
     .cardapio-item-info {
         height: 40%;
     }

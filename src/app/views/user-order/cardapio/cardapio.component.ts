@@ -16,6 +16,11 @@ export class CardapioComponent implements OnInit {
   vinhos = [];
   porcoes = [];
   pasteis = [];
+  cervejas = [];
+  refrigerantes = [];
+  sucos = [];
+  aguas = [];
+  espumantes = [];
 
   constructor(
     private _produtos: ProdutosService) {
@@ -39,13 +44,42 @@ export class CardapioComponent implements OnInit {
 
   sortProdutos() {
     this.produtos.forEach(produto => {
-      if(produto.tipo == 'Pizza') {
+      if (produto.tipo == 'Pizza') {
         this.pizzas.push(produto);
       }
 
-      if(produto.tipo == 'Pastel') {
+      if (produto.tipo == 'Pastel') {
         this.pasteis.push(produto);
       }
+
+      if (produto.tipo == 'Cerveja') {
+        this.cervejas.push(produto);
+      }
+
+      if (produto.tipo == 'Espumante') {
+        this.espumantes.push(produto);
+      }
+
+      if (produto.tipo == 'Suco') {
+        this.sucos.push(produto);
+      }
+
+      if (produto.tipo == 'Porcao') {
+        this.porcoes.push(produto);
+      }
+
+      if (produto.tipo == 'Vinho') {
+        this.vinhos.push(produto);
+      }
+
+      if (produto.tipo == 'Agua') {
+        this.aguas.push(produto);
+      }
+
+      if (produto.tipo == 'Refrigerante') {
+        this.refrigerantes.push(produto);
+      }
+
     });
 
   }

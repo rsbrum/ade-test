@@ -10,7 +10,10 @@
       <label for="">Sabor {{i + 1}}</label>
       <select class="form-control">
         <option value="" selected disabled hidden>Escolha um sabor</option>
-        <option *ngFor="let sabor of sabores" [value]="sabor" (click)="selectSabor(sabor, i)">{{sabor.nome}}</option>
+        <option *ngFor="let sabor of sabores" [value]="sabor" (click)="selectSabor(sabor, i)">
+          {{sabor.nome}} -
+          <span style="font-weight: bold !important;">{{sabor.descricao}}</span>
+        </option>
       </select>
     </div>
   </div>
