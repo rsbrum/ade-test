@@ -182,4 +182,32 @@ export class CupomComponent implements OnInit {
     )
   }
 
+  searchItems(str): void {
+    if (str == undefined) {
+      return
+    }
+    if (str.length == 0) {
+      this.getCupons();
+    }
+
+    var matchedItems = []
+    var regex = new RegExp(str.toLowerCase());
+    //var len = search.length;
+
+    this.cupons.forEach((item) => {
+
+      if (regex.test(item.codigo.toLowerCase())) {
+        matchedItems.push(item)
+      }
+
+      var id = item.id.toString();
+      if (regex.test(id.toLowerCase())) {
+        matchedItems.push(item)
+      }
+
+    })
+
+    this.cupons = matchedItems;
+  }
+
 }
