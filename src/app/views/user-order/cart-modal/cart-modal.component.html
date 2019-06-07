@@ -17,6 +17,33 @@
     </div>
   </div>
 
+  <div class="row mt-3" style="height:10%;" style="border-top: 1px solid #ccc;">
+    <div class="col-12 mt-1">
+      <h5>Cupom de desconto</h5>
+    </div>
+    <div class="col-0 col-sm-0 col-md-0 col-lg-6 col-xl-6 mt-1">
+    </div>
+    <div class="col-0 col-sm-0 col-md-0 col-lg-6 col-xl-6 mt-1 mb-2">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 mt-3 ">
+          <form [formGroup]="cupomForm">
+            <input formControlName="codigo" type="text" class="form-control " placeholder="Cupom" style="display: inline-block;"
+            [ngClass]="{
+              'alert-danger' : errorCupom,
+              'alert-success' : cupomSuccess
+            }"
+            >
+          </form>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-3">
+          <button (click)="applyCupom()" class="btn bg-dark p-2 m-auto"
+            style="color: white; float: right;">Ativar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="row mt-3 " style="height:10%;" style="border-top: 1px solid #ccc;">
     <div class="col-12 col-sm-12 col-md-4 col-lg-4 mt-3">
       <h4>TOTAL: R$ {{total}}</h4>
@@ -28,24 +55,7 @@
     </div>
   </div>
 
-  <div class="row mt-3" style="height:10%;" style="border-top: 1px solid #ccc;">
-    <div class="col-0 col-sm-0 col-md-0 col-lg-6 col-xl-6 mt-3">
-    </div>
-    <div class="col-0 col-sm-0 col-md-0 col-lg-6 col-xl-6 mt-3 mb-2">
-      <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 mb-2">
-          <form [formGroup]="cupomForm">
-            <input formControlName="codigo" type="text" class="form-control " placeholder="Cupom" style="display: inline-block;">
-          </form>
-        </div>
 
-        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-3">
-          <button (click)="applyCupom()" class="btn bg-dark p-2 m-auto"
-            style="color: white; float: right;">Adicionar</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
 </div>
 

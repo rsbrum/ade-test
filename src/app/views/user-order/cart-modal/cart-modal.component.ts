@@ -16,6 +16,8 @@ export class CartModalComponent implements OnInit {
 
   public cartItems;
   public total;
+  public errorCupom = false;
+  public cupomSuccess = false;
 
   cupomForm = new FormGroup({
     codigo: new FormControl('')
@@ -79,9 +81,14 @@ export class CartModalComponent implements OnInit {
     this._cupom.checkValidity(cupom).subscribe(
       res => {
         if(res['status']){
-          console.log('valido')
+          this.cupomSuccess = true;
+
+          var percent = res['cupom']['porcentagem'];
+          var subtract = (this.total * percent) / 100;
+          this.total = (this.total - subtract).toFixed(2);
+
         } else {
-          console.log('invalido');
+          this.errorCupom = true;
         }
       },
       err => {
