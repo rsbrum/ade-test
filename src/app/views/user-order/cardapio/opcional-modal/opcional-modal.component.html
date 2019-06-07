@@ -27,15 +27,18 @@
       <div class="col-12 table-row">
         <input (click)="selectOpcional(opcional)" type="checkbox" class="form-check-input">
         <span>{{opcional.nome}}</span> <br>
-        <span style="font-size:12px;">{{opcional.descricao}}</span>
+        <span style="font-size:12px;">R$ {{opcional.adicional}}</span>
       </div>
     </div>
 
   </div>
 
   <div class="row">
-    <div class="col-12">
-      <button class="float-right mt-3 btn-dark"(click)="addToCart()">ADICIONAR</button>
+    <div class="col">
+      <h4 class="mt-3">Adicional: R$ {{adicional_display}}</h4>
+    </div>
+    <div class="col">
+      <button class="float-right mt-3 btn-dark mb-3 p-2" (click)="addToCart()">Adicionar</button>
     </div>
   </div>
 </div>

@@ -12,8 +12,9 @@ export class HeaderComponent implements OnInit {
 
   public cartSpan: Number;
 
-  constructor(public dialog: MatDialog,
-    private cartService: CartService) { }
+  constructor(
+    public dialog: MatDialog,
+    private cartService: CartService,) { }
 
 
   ngOnInit() {

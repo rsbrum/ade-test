@@ -16,6 +16,7 @@ export class CartModalComponent implements OnInit {
 
   public cartItems;
   public total;
+  public total_display;
   public errorCupom = false;
   public cupomSuccess = false;
 
@@ -48,6 +49,8 @@ export class CartModalComponent implements OnInit {
     });
 
     this.total = value;
+    this.total_display = this.total.toString().replace('.', ',')
+
   }
 
   onNoClick(): void {

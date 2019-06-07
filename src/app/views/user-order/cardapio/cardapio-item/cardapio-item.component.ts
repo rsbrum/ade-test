@@ -3,6 +3,8 @@ import { CardapioItem } from '@models/cardapio-item';
 import { CartService } from '@services/cart.service';
 import { OpcionalModalComponent } from '../opcional-modal/opcional-modal.component';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
+
 
 @Component({
   selector: 'app-cardapio-item',
@@ -20,6 +22,7 @@ export class CardapioItemComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private dialog: MatDialog,
+    public snackBar: MatSnackBar
    ) {
 
    }
@@ -72,6 +75,7 @@ export class CardapioItemComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
 
       if(result === 'success'){
+        this.snackBar.open('Produto adicionado ao carrinho!', 'OK', {duration: 3000});
         this.isInCart = true;
       }
 
@@ -83,6 +87,7 @@ export class CardapioItemComponent implements OnInit {
     this.cartService.addItem(this.itemInfo);
     this.updateCartHeader();
     this.isInCart = true;
+    this.snackBar.open('Produto adicionado ao carrinho!', 'OK', {duration: 3000});
   }
 
   updateCartHeader(): void {

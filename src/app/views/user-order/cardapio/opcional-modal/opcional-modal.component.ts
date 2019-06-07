@@ -16,7 +16,8 @@ export class OpcionalModalComponent implements OnInit {
   sabores_pedido = [];
   opcionais_pedido = [];
   sabor_quantidade = [];
-
+  adicional = 0.0;
+  adicional_display;
 
   constructor(
     public _cartService: CartService,
@@ -27,6 +28,9 @@ export class OpcionalModalComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+
+    this.adicional_display = this.adicional.toFixed(2).replace('.', ',')
+
     for(let x=0; x < this.data.quantidade_sabores; x++) {
       this.sabor_quantidade.push('1');
     }
@@ -37,6 +41,16 @@ export class OpcionalModalComponent implements OnInit {
 
     this.getSabores();
     this.getOpcionais();
+  }
+
+  updateOpcionalAdicional() {
+    this.adicional = 0.0;
+    this.opcionais_pedido.forEach( opcional => {
+      this.adicional += parseFloat(opcional['adicional']);
+    })
+
+    this.adicional_display = this.adicional.toFixed(2).replace('.', ',');
+
   }
 
   selectOpcional(item) {
@@ -50,15 +64,17 @@ export class OpcionalModalComponent implements OnInit {
     } else {
       this.opcionais_pedido.push(item);
     }
-
+    this.updateOpcionalAdicional();
   }
 
   addToCart(): void {
     this.data["sabores_info"] = this.sabores_pedido;
     this.data["opcionais_info"] = this.opcionais_pedido;
+    this.data["preco"] = parseFloat(this.data["preco"]) + this.adicional;
     this._cartService.addItem(this.data);
     this.updateCartHeader();
     this.dialogRef.close('success');
+
   }
 
   updateCartHeader(): void {
