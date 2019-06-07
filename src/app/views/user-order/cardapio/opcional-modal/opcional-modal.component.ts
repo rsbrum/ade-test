@@ -32,7 +32,7 @@ export class OpcionalModalComponent implements OnInit {
     }
 
     if (document.documentElement.clientWidth < 1200) {
-      this.dialogRef.updateSize("99%");
+      this.dialogRef.updateSize("99%", '500px');
     }
 
     this.getSabores();
