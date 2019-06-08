@@ -37,7 +37,7 @@ export class OpcionaisTableComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 'success') {
-        this.snackBar.open('Produto editado!', 'Ok', { duration: 3000 });
+        this.snackBar.open('Opcional adicionado!', 'Ok', { duration: 3000 });
       }
 
       this.getOpcionais();
