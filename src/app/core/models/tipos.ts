@@ -6,5 +6,6 @@ export const TIPOS_PRODUTOS = [
   'Porcao',
   'Cerveja',
   'Suco',
-  'Agua'
+  'Agua',
+  'Vinho'
 ]

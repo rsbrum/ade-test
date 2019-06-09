@@ -43,13 +43,13 @@ export class CartModalComponent implements OnInit {
   }
 
   calcularTotal() {
-    var value = 0;
+    var value = 0.0;
     this.cartItems.forEach(element => {
       value += parseFloat(element.preco);
     });
 
     this.total = value;
-    this.total_display = this.total.toString().replace('.', ',')
+    this.total_display = this.total.toFixed(2).replace('.', ',')
 
   }
 
@@ -89,6 +89,7 @@ export class CartModalComponent implements OnInit {
           var percent = res['cupom']['porcentagem'];
           var subtract = (this.total * percent) / 100;
           this.total = (this.total - subtract).toFixed(2);
+          this.total_display = this.total;
 
         } else {
           this.errorCupom = true;

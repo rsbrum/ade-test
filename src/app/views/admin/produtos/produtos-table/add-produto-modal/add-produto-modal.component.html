@@ -74,7 +74,7 @@
         <div *ngIf="clicked" style="float: right; height: 25px; width: 25px;">
           <mat-spinner class="mt-2" [diameter]="25"></mat-spinner>
         </div>
-        <button class="btn mx-2" style="float: right;">Cancelar</button>
+        <button class="btn mx-2" [mat-dialog-close]="true" style="float: right;">Cancelar</button>
       </div>
     </div>
   </form>
