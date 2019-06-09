@@ -83,7 +83,7 @@ export class CupomComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result === 'success') {
-        this.snackBar.open('Produto deletado!', 'Ok', {duration: 3000});
+        this.snackBar.open('Cupom deletado!', 'Ok', {duration: 3000});
       }
 
       this.getCupons();
