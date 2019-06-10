@@ -20,6 +20,10 @@ export class AuthService {
     return this._http.post(this.apiUrl + "api/auth/login", data);
   }
 
+  signup(data) {
+    return this._http.post('https://portalsulweb.com.br/sites/adepizzas-api.com.br/api/auth/signup', data);
+  }
+
   isLoggedIn() {
     var user = localStorage.getItem('current_user');
 

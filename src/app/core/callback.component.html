@@ -25,7 +25,7 @@
 
         <button *ngIf="!clicked" (click)="callback()" class="btn mt-2 shadow d-block m-auto"
           style="border: 1px solid rgba(0,0,0,0.1)">Finalizar</button>
-        <div *ngIf="clicked" style="height: 25px; width: 25px;"><mat-spinner class="mt-2"  [diameter]="25"></mat-spinner></div>
+        <div *ngIf="clicked" class=" m-auto"style="height: 25px; width: 25px;"><mat-spinner class="mt-2"  [diameter]="25"></mat-spinner></div>
       </form>
     </div>
   </div>

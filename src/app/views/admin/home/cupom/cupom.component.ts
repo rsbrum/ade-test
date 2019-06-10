@@ -15,6 +15,7 @@ export class CupomComponent implements OnInit {
 
   cupons = [];
   selected = [];
+  status: Boolean;
   disabledEdit: Boolean = true;
   disabledConcluir: Boolean = true;
   disabledDelete: Boolean = true;
@@ -35,6 +36,7 @@ export class CupomComponent implements OnInit {
     this._cupons.get().subscribe(
       res => {
         this.cupons = res['cupons'];
+
       },
       err => {
 

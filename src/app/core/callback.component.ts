@@ -12,7 +12,7 @@ export class CallbackComponent implements OnInit {
 
   apiUrl = environment.apiUrl;
   clicked: Boolean = false;
-
+  user_id;
   pedidoForm = new FormGroup({
     rua: new FormControl(''),
     bairro: new FormControl(''),
@@ -31,7 +31,10 @@ export class CallbackComponent implements OnInit {
    * Facebook callback component
    */
   ngOnInit() {
-
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.user_id = params['user_id'];
+      console.log(this.user_id);
+    });
   }
 
   callback(): void {
@@ -40,48 +43,85 @@ export class CallbackComponent implements OnInit {
     var url = window.location.href;
     var str = url.split('=')[1];
     str = str.split('&')[0];
-
     var data = { "code": str }
 
-    this._http.post(this.apiUrl + '/api/auth/callback', data).subscribe(
-      res => {
+    if (this.user_id) {
+      var user_id = this.user_id;
+      var produtos = JSON.parse(localStorage.getItem('cart-items'));
+      var value = 0;
+      var endereco = this.pedidoForm.get('bairro').value + ", " + this.pedidoForm.get('rua').value + ", " + this.pedidoForm.get('numero').value;
+      var contato = this.pedidoForm.get('contato').value;
 
-        var user_id = res["user"]["id"];
-        var produtos = JSON.parse(localStorage.getItem('cart-items'));
-        var value = 0;
-        var endereco = this.pedidoForm.get('bairro').value + ", " + this.pedidoForm.get('rua').value + ", " + this.pedidoForm.get('numero').value;
-        var contato = this.pedidoForm.get('contato').value;
+      produtos.forEach(element => {
+        value += parseFloat(element.preco);
+      });
 
-        produtos.forEach(element => {
-          value += parseFloat(element.preco);
-        });
-
-        var data = {
-          "user_id": user_id,
-          "valor_total": value,
-          "produtos": produtos,
-          "endereco": endereco,
-          "contato": contato
-        }
-
-        this._pedidos.addPedido(data).subscribe(
-          res => {
-            this.clicked = false;
-            window.location.href = "https://ade-pizzas.herokuapp.com/";
-            localStorage.removeItem('cart-items');
-          },
-          err => {
-            this.clicked = false;
-            console.log(err)
-          }
-        )
-
-      },
-      err => {
-        this.clicked = false;
-        console.log(err);
+      var data_pedido = {
+        "user_id": user_id,
+        "valor_total": value,
+        "produtos": produtos,
+        "endereco": endereco,
+        "contato": contato
       }
-    );
+      //normal user
+      this._pedidos.addPedido(data_pedido).subscribe(
+        res => {
+          this.clicked = false;
+          window.location.href = "https://ade-pizzas.herokuapp.com/";
+          localStorage.removeItem('cart-items');
+        },
+        err => {
+          this.clicked = false;
+          console.log(err)
+        }
+      )
+      return;
+    }
+
+    //if facebook code is available
+    if (data) {
+      this._http.post(this.apiUrl + '/api/auth/callback', data).subscribe(
+        res => {
+
+          var user_id = res["user"]["id"];
+          var produtos = JSON.parse(localStorage.getItem('cart-items'));
+          var value = 0;
+          var endereco = this.pedidoForm.get('bairro').value + ", " + this.pedidoForm.get('rua').value + ", " + this.pedidoForm.get('numero').value;
+          var contato = this.pedidoForm.get('contato').value;
+
+          produtos.forEach(element => {
+            value += parseFloat(element.preco);
+          });
+
+          var data = {
+            "user_id": user_id,
+            "valor_total": value,
+            "produtos": produtos,
+            "endereco": endereco,
+            "contato": contato
+          }
+
+          this._pedidos.addPedido(data).subscribe(
+            res => {
+              this.clicked = false;
+              window.location.href = "https://ade-pizzas.herokuapp.com/";
+              localStorage.removeItem('cart-items');
+            },
+            err => {
+              this.clicked = false;
+              console.log(err)
+            }
+          )
+
+        },
+        err => {
+          this.clicked = false;
+          console.log(err);
+        }
+      );
+
+    }
+
   }
 
 }

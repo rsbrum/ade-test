@@ -1,9 +1,24 @@
 <div class="container-fluid h-100 w-100">
-  <div class="row  h-100">
+  <div class="row h-100">
     <div class="m-auto col-11 col-sm-11 col-md-11 col-lg-4 shadow p-5 text-center">
       <p class="mb-3">Para finalizar o pedido, entre com o Facebook!</p>
+      <button (click)="loginFacebook()" class="btn mt-2 mb-2 shadow d-block m-auto"
+        style="border: 1px solid rgba(0,0,0,0.1); width:250px;"><img
+          src="http://portalsulweb.com.br/sites/adepizzas.com.br/assets/facebook-icon.png"
+          style="height: 40px; width:40px;" alt=""> <span class="ml-1" style="font-size: 13px;">ENTRAR COM
+          FACEBOOK</span></button>
+      <a (click)="showLoginFunc()" *ngIf="!showLogin && !showSignup" class="mt-2"
+        style="font-size:13px; color:rgb(72, 93, 185)">Login com email</a>
       <form [formGroup]="loginForm" *ngIf='showLogin'>
-        <div class="form-group">
+        <div *ngIf="verify_email_message" class='alert alert-success mt-3'>
+          <p>Ative o email clicando no link enviado para o seu email!</p>
+        </div>
+
+        <div *ngIf="error_login" class='alert alert-danger mt-3'>
+          <p>Email e senha errados ou email nao foi verificado!</p>
+        </div>
+
+        <div class="form-group mt-2">
           <label for="exampleInputEmail1">Email</label>
           <input type="email" class="form-control" placeholder="Email" formControlName="email">
         </div>
@@ -11,15 +26,41 @@
           <label for="exampleInputPassword1">Senha</label>
           <input type="password" class="form-control" formControlName="password" placeholder="Senha">
         </div>
-        <button class="btn btn-dark mb-1" (click)="login()">Entrar</button>
+        <button *ngIf="!clicked" class="btn btn-dark mb-1" (click)="login()">Entrar</button>
+        <div *ngIf="clicked" class=" m-auto" style="height: 25px; width: 25px;">
+          <mat-spinner class="mt-2" [diameter]="25"></mat-spinner>
+        </div>
+        <a (click)="showSignupFunc()" class="mt-2 d-block" style="font-size:15px; color:rgb(72, 93, 185)">Fazer
+          cadastro</a>
       </form>
-      <button (click)="loginFacebook()" class="btn mt-2 mb-2 shadow d-block m-auto"
-        style="border: 1px solid rgba(0,0,0,0.1)"><img
-          src="http://portalsulweb.com.br/sites/adepizzas.com.br/assets/facebook-icon.png"
-          style="height: 50px; width:50px;" alt=""> <span class="ml-1"style="font-size: 13px;">ENTRAR COM FACEBOOK</span></button>
-      <a (click)="showLoginFunc()" class="mt-2" style="font-size:13px; color:rgb(72, 93, 185)">Login com email</a>
 
+      <form [formGroup]="signupForm" *ngIf="showSignup">
+        <p class="mb-3">Cadastre-se!</p>
+        <div class="form-group">
+          <div *ngIf="error_signup" class='alert alert-danger mt-3'>
+            <p>Verifique se os dois emails estao iguais!</p>
+          </div>
+          <label>Nome</label>
+          <input type="text" class="form-control" placeholder="Nome" formControlName="name">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email</label>
+          <input type="email" class="form-control" placeholder="Email" formControlName="email">
+        </div>
+        <div class="form-group">
+          <label>Confimar Email</label>
+          <input type="email" class="form-control" placeholder="Confirmar email" formControlName="confirmEmail">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Senha</label>
+          <input type="password" class="form-control" formControlName="pwd" placeholder="Senha">
+        </div>
+        <button *ngIf="!clicked" class="btn btn-dark mb-1" (click)="signup()">Cadastrar</button>
+        <div *ngIf="clicked" class=" m-auto" style="height: 25px; width: 25px;">
+          <mat-spinner class="mt-2" [diameter]="25"></mat-spinner>
+        </div>
+        <a (click)="showLoginFunc()" class="mt-2 d-block" style="font-size:15px; color:rgb(72, 93, 185)">Entrar</a>
+      </form>
     </div>
   </div>
 </div>
-<router-outlet></router-outlet>
