@@ -62,9 +62,16 @@ export class AuthComponent implements OnInit {
           this._auth.setTokens(res["tokens"]["access_token"], res["tokens"]["refresh_token"]);
           this._auth.setUser(res['user']);
           this._router.navigate(['admin']);
+        }
+
+        if(res['user']['verified'] == '0') {
+          this.clicked = false;
+          this.error_login = true;
+          return;
         } else {
           window.location.href = 'https://ade-pizzas.herokuapp.com/callback?user_id=' + res['user']['id'];
         }
+
       },
       err => {
         this.clicked = false;

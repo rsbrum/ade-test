@@ -21,7 +21,8 @@ export class AuthService {
   }
 
   signup(data) {
-    return this._http.post('https://portalsulweb.com.br/sites/adepizzas-api.com.br/api/auth/signup', data);
+    return this._http.post(this.apiUrl + 'api/auth/signup', data);
+    //return this._http.post('https://portalsulweb.com.br/sites/adepizzas-api.com.br/api/auth/signup', data);
   }
 
   isLoggedIn() {
