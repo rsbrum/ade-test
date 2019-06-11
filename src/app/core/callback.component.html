@@ -4,28 +4,32 @@
       <p class="mb-3 font-weight-bold">Informe o seu endereco!</p>
       <form [formGroup]="pedidoForm ">
         <div class="form-group text-left">
-          <label >Rua</label>
+          <label>Rua</label>
           <input class="form-control" formControlName="rua">
         </div>
 
         <div class="form-group text-left">
-          <label >Bairro</label>
+          <label>Bairro</label>
           <input class="form-control" formControlName="bairro">
         </div>
 
         <div class="form-group text-left">
           <label>Numero</label>
-          <input class="form-control"  formControlName="numero">
+          <input class="form-control" formControlName="numero">
         </div>
 
         <div class="form-group text-left">
           <label>Contato</label>
-          <input class="form-control" placeholder="(54) 996523519" formControlName="contato">
+          <!-- <input class="form-control" placeholder="(54) 996523519" formControlName="contato"> -->
+          <input class="form-control" [textMask]="{mask: mask}" placeholder="54 9 96514419" formControlName="contato"
+            [(ngModel)]="myModel" type="text" />
         </div>
 
         <button *ngIf="!clicked" (click)="callback()" class="btn mt-2 shadow d-block m-auto"
           style="border: 1px solid rgba(0,0,0,0.1)">Finalizar</button>
-        <div *ngIf="clicked" class=" m-auto"style="height: 25px; width: 25px;"><mat-spinner class="mt-2"  [diameter]="25"></mat-spinner></div>
+        <div *ngIf="clicked" class=" m-auto" style="height: 25px; width: 25px;">
+          <mat-spinner class="mt-2" [diameter]="25"></mat-spinner>
+        </div>
       </form>
     </div>
   </div>

@@ -9,6 +9,8 @@ import { FormGroup, FormControl } from '@angular/forms';
   templateUrl: 'callback.component.html'
 })
 export class CallbackComponent implements OnInit {
+  public myModel = ''
+  public mask = [ /[1-9]/, /\d/, ' ', /\d/, ' ', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/];
 
   apiUrl = environment.apiUrl;
   clicked: Boolean = false;
@@ -25,6 +27,8 @@ export class CallbackComponent implements OnInit {
     private _http: HttpClient,
     private _pedidos: PedidosService
   ) {
+
+
   }
 
   /**
@@ -33,13 +37,23 @@ export class CallbackComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(params => {
       this.user_id = params['user_id'];
-      console.log(this.user_id);
     });
+  }
+
+  cleanContato(str) {
+    console.log('here');
+    var buffer = "";
+    for(var x = 0; x< str.length; x++) {
+      if(str[x] != ' ') {
+        buffer += str[x]
+      }
+    }
+
+    return buffer;
   }
 
   callback(): void {
     this.clicked = true;
-
     var url = window.location.href;
     var str = url.split('=')[1];
     str = str.split('&')[0];
@@ -50,7 +64,8 @@ export class CallbackComponent implements OnInit {
       var produtos = JSON.parse(localStorage.getItem('cart-items'));
       var value = 0;
       var endereco = this.pedidoForm.get('bairro').value + ", " + this.pedidoForm.get('rua').value + ", " + this.pedidoForm.get('numero').value;
-      var contato = this.pedidoForm.get('contato').value;
+      var str1 = this.pedidoForm.get('contato').value;
+      var contato = this.cleanContato(str1);
 
       produtos.forEach(element => {
         value += parseFloat(element.preco);
@@ -87,7 +102,7 @@ export class CallbackComponent implements OnInit {
           var produtos = JSON.parse(localStorage.getItem('cart-items'));
           var value = 0;
           var endereco = this.pedidoForm.get('bairro').value + ", " + this.pedidoForm.get('rua').value + ", " + this.pedidoForm.get('numero').value;
-          var contato = this.pedidoForm.get('contato').value;
+          var contato = this.cleanContato(this.pedidoForm.get('contato').value);
 
           produtos.forEach(element => {
             value += parseFloat(element.preco);

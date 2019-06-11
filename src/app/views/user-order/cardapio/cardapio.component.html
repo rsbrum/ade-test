@@ -1,4 +1,11 @@
+<div *ngIf="!date" id="cardapio-warning" class="row p-2">
+  <div class="col-12 d-flex">
+    <div class="alert alert-danger m-auto text-center" style="width: 200px;">Estamos fechados</div>
+  </div>
+</div>
+
 <div id="cardapio" class="row justify-content-center pb-3">
+
   <div class="col-12 col-sm-12 col-md-12 col-lg-11">
     <mat-tab-group class="mt-1">
 

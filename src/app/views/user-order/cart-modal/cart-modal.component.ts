@@ -19,6 +19,7 @@ export class CartModalComponent implements OnInit {
   public total_display;
   public errorCupom = false;
   public cupomSuccess = false;
+  disabled = false;
 
   cupomForm = new FormGroup({
     codigo: new FormControl('')
@@ -30,7 +31,16 @@ export class CartModalComponent implements OnInit {
     private _cart: CartService,
     private _auth: AuthService,
     private _pedidos : PedidosService,
-    private _cupom: CupomService) { }
+    private _cupom: CupomService) {
+      var d = new Date();
+      var currtime = d.getHours() * 100 + d.getMinutes();
+
+      if(currtime > 1800 && currtime < 2315) {
+        this.disabled = false;
+      } else {
+        this.disabled = true;
+      }
+     }
 
   ngOnInit() {
     if (document.documentElement.clientWidth < 1200) {
@@ -81,6 +91,12 @@ export class CartModalComponent implements OnInit {
 
   applyCupom() {
     var cupom = this.cupomForm.get('codigo').value;
+
+    if(this.cupomSuccess) {
+      this.errorCupom = true;
+      return;
+    }
+
     this._cupom.checkValidity(cupom).subscribe(
       res => {
         if(res['status']){

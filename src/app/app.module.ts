@@ -46,7 +46,7 @@ import {
   MatToolbarModule,
   MatTooltipModule,
   MatTreeModule, } from '@angular/material';
-
+  import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
   declarations: [
@@ -63,7 +63,8 @@ import {
     HttpClientModule,
     CommonModule,
     ReactiveFormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    TextMaskModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

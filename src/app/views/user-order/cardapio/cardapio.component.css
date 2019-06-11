@@ -1,6 +1,11 @@
-#cardapio { 
+#cardapio {
     min-height: 1000px;
     height: auto;
     background-image: url('../../../../assets/index/paper-texture.jpg');
     background-size: 100% 100%;
+}
+
+#cardapio-warning {
+  background-image: url('../../../../assets/index/paper-texture.jpg');
+  background-size: 100% 100%;
 }
