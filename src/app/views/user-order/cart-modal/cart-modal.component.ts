@@ -35,11 +35,11 @@ export class CartModalComponent implements OnInit {
       var d = new Date();
       var currtime = d.getHours() * 100 + d.getMinutes();
 
-      if(currtime > 1800 && currtime < 2315) {
+/*       if(currtime > 1800 && currtime < 2315) {
         this.disabled = false;
       } else {
         this.disabled = true;
-      }
+      } */
      }
 
   ngOnInit() {

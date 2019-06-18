@@ -21,17 +21,18 @@ export class CardapioComponent implements OnInit {
   sucos = [];
   aguas = [];
   espumantes = [];
-  date;
+  date = false;
+
   constructor(
     private _produtos: ProdutosService) {
     var d = new Date();
     var currtime = d.getHours() * 100 + d.getMinutes();
-
+/*
     if(currtime > 1800 && currtime < 2315) {
       this.date = true;
     } else {
       this.date = false;
-    }
+    } */
 
   }
 
