@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Produto } from '@models/produto';
 import { ProdutosService } from '../../../../../core/services/produtos.service';
 import { MatDialogRef } from '@angular/material';
@@ -26,15 +26,15 @@ export class AddProdutoModalComponent implements OnInit {
   ) { }
 
   addProdutoForm = new FormGroup({
-    codigo: new FormControl(''),
-    nome: new FormControl(''),
-    preco: new FormControl(''),
-    status: new FormControl(''),
-    tipo: new FormControl(''),
-    descricao: new FormControl(''),
-    sabores: new FormControl(''),
-    opcional: new FormControl(''),
-    quantidade_sabores: new FormControl(0)
+    codigo: new FormControl('', Validators.required),
+    nome: new FormControl('', Validators.required),
+    preco: new FormControl('', Validators.required),
+    status: new FormControl('', Validators.required),
+    tipo: new FormControl('', Validators.required),
+    descricao: new FormControl('', Validators.required),
+    sabores: new FormControl('', Validators.required),
+    opcional: new FormControl('', Validators.required),
+    quantidade_sabores: new FormControl(0, Validators.required)
   });
 
   ngOnInit() {
@@ -46,7 +46,7 @@ export class AddProdutoModalComponent implements OnInit {
 
   addProduto() {
     this.clicked = true;
-
+    console.log(this.addProdutoForm.status);
     this._produtos.addProduto(this.addProdutoForm.value).subscribe(
       res => {
         this.clicked = false;

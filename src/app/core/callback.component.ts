@@ -63,7 +63,7 @@ export class CallbackComponent implements OnInit {
       var user_id = this.user_id;
       var produtos = JSON.parse(localStorage.getItem('cart-items'));
       var value = 0;
-      var endereco = this.pedidoForm.get('bairro').value + ", " + this.pedidoForm.get('rua').value + ", " + this.pedidoForm.get('numero').value;
+      var endereco = this.pedidoForm.get('bairro').value + " & " + this.pedidoForm.get('rua').value + " & " + this.pedidoForm.get('numero').value;
       var str1 = this.pedidoForm.get('contato').value;
       var contato = this.cleanContato(str1);
 
@@ -101,7 +101,7 @@ export class CallbackComponent implements OnInit {
           var user_id = res["user"]["id"];
           var produtos = JSON.parse(localStorage.getItem('cart-items'));
           var value = 0;
-          var endereco = this.pedidoForm.get('bairro').value + ", " + this.pedidoForm.get('rua').value + ", " + this.pedidoForm.get('numero').value;
+          var endereco = this.pedidoForm.get('bairro').value + " & " + this.pedidoForm.get('rua').value + " & " + this.pedidoForm.get('numero').value;
           var contato = this.cleanContato(this.pedidoForm.get('contato').value);
 
           produtos.forEach(element => {

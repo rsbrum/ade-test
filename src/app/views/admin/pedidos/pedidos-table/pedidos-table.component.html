@@ -66,7 +66,25 @@
       <div class="col-12 col-sm-12 col-md-3 col-lg-3">
         <span *ngFor='let produto of item["produtos"]'>
           {{produto.nome}} - {{produto.quantidade}},
+
+          <span *ngIf="produto.sabores === 1">
+            <br>
+            <span style="font-weight: bold;">Sabores: </span>
+            <span style="font-size: 14px;" *ngFor="let sabor of produto.sabores_info">
+              {{sabor.nome}},
+            </span>
+          </span>
+          <br>
+          <span *ngIf="produto.opcional === 1">
+            <span style="font-weight: bold;">Opcionais: </span>
+            <span style="font-size: 14px;" *ngFor="let opcional of produto.opcionais_info">
+              {{opcional.nome}},
+            </span>
+            <br>
+          </span>
         </span>
+
+
       </div>
       <div class="col-12 col-sm-12 col-md-2 col-lg-2">
         <span *ngIf="item.status === 'Pendente'" class="badge badge-warning">Pendente</span>

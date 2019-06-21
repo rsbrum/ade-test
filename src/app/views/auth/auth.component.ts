@@ -52,6 +52,12 @@ export class AuthComponent implements OnInit {
   login() {
     var email = this.loginForm.get('email').value;
     var pwd = this.loginForm.get('password').value;
+
+    this.error = false;
+    this.verify_email_message = false;
+    this.error_login = false;
+    this.error_signup = false;
+
     this.clicked = true;
 
     this._auth.login(email, pwd).subscribe(
@@ -62,15 +68,16 @@ export class AuthComponent implements OnInit {
           this._auth.setTokens(res["tokens"]["access_token"], res["tokens"]["refresh_token"]);
           this._auth.setUser(res['user']);
           this._router.navigate(['admin']);
+          return;
         }
 
         if(res['user']['verified'] == '0') {
           this.clicked = false;
           this.error_login = true;
           return;
-        } else {
-          window.location.href = 'https://ade-pizzas.herokuapp.com/callback?user_id=' + res['user']['id'];
         }
+
+        window.location.href = 'https://ade-pizzas.herokuapp.com/callback?user_id=' + res['user']['id'];
 
       },
       err => {
@@ -107,6 +114,11 @@ export class AuthComponent implements OnInit {
     this.clicked = true;
     var email1 = this.signupForm.get('email').value;
     var email2 = this.signupForm.get('confirmEmail').value;
+
+    this.error = false;
+    this.verify_email_message = false;
+    this.error_login = false;
+    this.error_signup = false;
 
     if(email1 != email2){
       this.error_signup = true;
