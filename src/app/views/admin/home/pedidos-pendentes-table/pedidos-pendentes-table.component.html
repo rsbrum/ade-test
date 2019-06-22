@@ -69,7 +69,7 @@
             {{produto.nome}} - <span style="font-weight: bold;">{{produto.quantidade}}</span>
           </span>
 
-          <span *ngIf="produto.sabores === 1">
+          <span *ngIf="produto.sabores == '1'">
             <br>
             <span style="font-weight: bold;">Sabores: </span>
             <span style="font-size: 14px;" *ngFor="let sabor of produto.sabores_info">
@@ -77,7 +77,7 @@
             </span>
           </span>
           <br>
-          <span *ngIf="produto.opcional === 1">
+          <span *ngIf="produto.opcional == '1'">
             <span style="font-weight: bold;">Opcionais: </span>
             <span style="font-size: 14px;" *ngFor="let opcional of produto.opcionais_info">
               {{opcional.nome}},
