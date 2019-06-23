@@ -32,8 +32,9 @@ export class CartModalComponent implements OnInit {
     private _auth: AuthService,
     private _pedidos : PedidosService,
     private _cupom: CupomService) {
-    var d = new Date();
-    var currtime = d.getHours() * 100 + d.getMinutes();
+
+      var d = new Date();
+      var currtime = d.getHours() * 100 + d.getMinutes();
 
 /*       if(currtime > 1800 && currtime < 2315) {
         this.disabled = false;

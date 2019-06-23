@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '@services/auth.service';
 import { Router } from "@angular/router"
 
@@ -17,10 +17,10 @@ export class AuthComponent implements OnInit {
   });
 
   signupForm = new FormGroup({
-    email: new FormControl(''),
-    confirmEmail: new FormControl(''),
-    name: new FormControl(''),
-    pwd: new FormControl('')
+    email: new FormControl('', Validators.required),
+    confirmEmail: new FormControl('', Validators.required),
+    name: new FormControl('', Validators.required),
+    pwd: new FormControl('', Validators.required)
   });
 
   showLogin = false;
@@ -31,6 +31,7 @@ export class AuthComponent implements OnInit {
   verify_email_message = false;
   error_login = false;
   error_signup = false;
+  error_signup_valid = false;
 
   constructor(
     private _auth: AuthService,
@@ -120,6 +121,12 @@ export class AuthComponent implements OnInit {
     this.error_login = false;
     this.error_signup = false;
 
+    if (!this.signupForm.valid) {
+      this.error_signup_valid = true;
+      this.clicked = false;
+      return;
+    }
+
     if(email1 != email2){
       this.error_signup = true;
       this.clicked = false;
@@ -132,6 +139,7 @@ export class AuthComponent implements OnInit {
         this.showSignup = false;
         this.showLogin = true;
         this.verify_email_message = true;
+        this.error_signup_valid = false;
       },
       err => {
         this.clicked = false;

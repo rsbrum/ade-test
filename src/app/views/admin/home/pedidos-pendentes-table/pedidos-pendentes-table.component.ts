@@ -13,6 +13,8 @@ export class PedidosPendentesTableComponent implements OnInit {
   disabledEdit: Boolean = true;
   disabledConcluir: Boolean = true;
   disabledDelete: Boolean = true;
+  showOpcionais: Boolean = false;
+  showSabores: Boolean = false;
 
   constructor(private _pedidos: PedidosService) { }
 

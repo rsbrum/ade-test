@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { environment } from '@env/environment';
 import { PedidosService } from '@services/pedidos.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-admin',
   templateUrl: 'callback.component.html'
@@ -14,12 +14,24 @@ export class CallbackComponent implements OnInit {
 
   apiUrl = environment.apiUrl;
   clicked: Boolean = false;
+  entrega: Boolean = false;
+  local: Boolean = false;
+  show_pedidoForm: Boolean = false;
+  show_tele_error: Boolean = false;
+  show_pedidoForm_error: Boolean = false;
+  show_localForm_error: Boolean = false;
   user_id;
+
   pedidoForm = new FormGroup({
-    rua: new FormControl(''),
-    bairro: new FormControl(''),
-    numero: new FormControl(''),
-    contato: new FormControl('')
+    rua: new FormControl('', Validators.required),
+    bairro: new FormControl('', Validators.required),
+    numero: new FormControl('', Validators.required),
+    complemento: new FormControl('', Validators.required),
+    contato: new FormControl('', Validators.required)
+  });
+
+  localForm = new FormGroup({
+    contato: new FormControl('', Validators.required)
   });
 
   constructor(
@@ -27,8 +39,6 @@ export class CallbackComponent implements OnInit {
     private _http: HttpClient,
     private _pedidos: PedidosService
   ) {
-
-
   }
 
   /**
@@ -40,8 +50,16 @@ export class CallbackComponent implements OnInit {
     });
   }
 
+  setLocal() {
+    this.local = !this.local;
+  }
+
+  setTele() {
+    this.show_pedidoForm = !this.show_pedidoForm;
+    this.entrega = !this.entrega;
+  }
+
   cleanContato(str) {
-    console.log('here');
     var buffer = "";
     for(var x = 0; x< str.length; x++) {
       if(str[x] != ' ') {
@@ -53,19 +71,54 @@ export class CallbackComponent implements OnInit {
   }
 
   callback(): void {
+
     this.clicked = true;
+
     var url = window.location.href;
     var str = url.split('=')[1];
-    str = str.split('&')[0];
     var data = { "code": str }
+    str = str.split('&')[0];
+
+    var produtos = JSON.parse(localStorage.getItem('cart-items'));
+    var value = 0;
+    var endereco = "";
+    var contato = "";
+
+    if(this.local == true && this.entrega == true) {
+      this.show_tele_error = true;
+      this.clicked = false;
+      return;
+    }
+
+    if(!this.pedidoForm.valid && this.entrega == true) {
+      this.show_pedidoForm_error = true;
+      this.clicked = false;
+      return;
+    }
+
+    this.show_pedidoForm_error = false;
+
+    if(this.entrega == true) {
+      value += 8;
+      endereco = this.pedidoForm.get('bairro').value + " & " + this.pedidoForm.get('rua').value + " & "
+      + this.pedidoForm.get('numero').value + " & " + this.pedidoForm.get('complemento').value;
+      contato = this.cleanContato(this.pedidoForm.get('contato').value);
+    }
+
+    if(this.local == true) {
+      endereco = "Retirar no local";
+
+      if(!this.localForm.valid) {
+        this.show_localForm_error = true;
+        this.clicked = false;
+        return;
+      }
+
+      contato =  this.cleanContato(this.localForm.get('contato').value);
+    }
 
     if (this.user_id) {
       var user_id = this.user_id;
-      var produtos = JSON.parse(localStorage.getItem('cart-items'));
-      var value = 0;
-      var endereco = this.pedidoForm.get('bairro').value + " & " + this.pedidoForm.get('rua').value + " & " + this.pedidoForm.get('numero').value;
-      var str1 = this.pedidoForm.get('contato').value;
-      var contato = this.cleanContato(str1);
 
       produtos.forEach(element => {
         value += parseFloat(element.preco);
@@ -99,7 +152,7 @@ export class CallbackComponent implements OnInit {
         res => {
 
           var user_id = res["user"]["id"];
-          var produtos = JSON.parse(localStorage.getItem('cart-items'));
+/*           var produtos = JSON.parse(localStorage.getItem('cart-items'));
           var value = 0;
           var endereco = this.pedidoForm.get('bairro').value + " & " + this.pedidoForm.get('rua').value + " & " + this.pedidoForm.get('numero').value;
           var contato = this.cleanContato(this.pedidoForm.get('contato').value);
@@ -107,7 +160,7 @@ export class CallbackComponent implements OnInit {
           produtos.forEach(element => {
             value += parseFloat(element.preco);
           });
-
+*/
           var data = {
             "user_id": user_id,
             "valor_total": value,
