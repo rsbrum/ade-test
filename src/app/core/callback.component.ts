@@ -76,9 +76,9 @@ export class CallbackComponent implements OnInit {
 
     var url = window.location.href;
     var str = url.split('=')[1];
-    var data = { "code": str }
     str = str.split('&')[0];
 
+    var data = { "code": str }
     var produtos = JSON.parse(localStorage.getItem('cart-items'));
     var value = 0;
     var endereco = "";
@@ -150,7 +150,6 @@ export class CallbackComponent implements OnInit {
     if (data) {
       this._http.post(this.apiUrl + '/api/auth/callback', data).subscribe(
         res => {
-
           var user_id = res["user"]["id"];
 /*           var produtos = JSON.parse(localStorage.getItem('cart-items'));
           var value = 0;

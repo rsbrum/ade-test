@@ -94,14 +94,14 @@ export class AuthComponent implements OnInit {
     this.clicked = true;
     this._auth.loginFacebook().subscribe(
       res => {
-        /*   window.location.href = res["target_url"]; */
+        window.location.href = res["target_url"];
         this.clicked = false;
         var url = res["target_url"];
-
+        console.log(url);
         var str = url.split('=')[1];
         str = str.split('&')[0];
 
-        window.location.href = url;
+        //window.location.href = url;
       },
       err => {
         this.clicked = false;
