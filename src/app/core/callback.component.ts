@@ -84,6 +84,10 @@ export class CallbackComponent implements OnInit {
     var endereco = "";
     var contato = "";
 
+    produtos.forEach(element => {
+      value += parseFloat(element.preco);
+    });
+
     if(this.local == true && this.entrega == true) {
       this.show_tele_error = true;
       this.clicked = false;
@@ -119,10 +123,6 @@ export class CallbackComponent implements OnInit {
 
     if (this.user_id) {
       var user_id = this.user_id;
-
-      produtos.forEach(element => {
-        value += parseFloat(element.preco);
-      });
 
       var data_pedido = {
         "user_id": user_id,
