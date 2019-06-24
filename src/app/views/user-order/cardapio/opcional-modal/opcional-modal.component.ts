@@ -53,6 +53,10 @@ export class OpcionalModalComponent implements OnInit {
 
   }
 
+  removeMeiaBorda() {
+
+  }
+
   selectOpcional(item) {
     if (this.opcionais_pedido.includes(item)) {
       for (var x = 0; x < this.opcionais_pedido.length; x++) {
@@ -97,6 +101,21 @@ export class OpcionalModalComponent implements OnInit {
     this._opcionais.getOpcional(this.data.id).subscribe(
       res => {
         this.opcionais = res["opcionais"];
+
+        if(this.data.quantidade_sabores == '1') {
+          var regex = /meia/;
+          var opcionaisSemMeia = [];
+
+          this.opcionais.forEach( elm => {
+            if(!regex.test(elm["nome"].toLowerCase())){
+              opcionaisSemMeia.push(elm);
+            }
+          });
+
+          this.opcionais = opcionaisSemMeia;
+
+        }
+
       },
       err => {
         console.log(err);
