@@ -34,20 +34,24 @@
     Id
   </div>
 
-  <div class="col-3 col-sm-3 col-md-3 col-lg-3 ">
+  <div class="col-3 col-sm-3 col-md-3 col-lg-2 ">
     Nome
   </div>
 
-  <div class="col-3 col-sm-3 col-md-3 col-lg-3 ">
+  <div class="col-3 col-sm-3 col-md-3 col-lg-2 d-none d-xs-none d-sm-none d-md-block d-lg-block ">
     Descricao
   </div>
 
-  <div class="col-2 d-none d-xs-none d-sm-none d-md-block d-lg-block">
+  <div class="col-2 d-none d-xs-none d-sm-none d-md-block d-lg-block d-none d-xs-none d-sm-none d-md-block d-lg-block">
     Tipo
   </div>
 
-  <div class="col-2 col-sm-2 col-md-3 col-lg-2 ">
+  <div class="col-2 col-sm-2 col-md-3 col-lg-2 d-none d-xs-none d-sm-none d-md-block d-lg-block">
     Status
+  </div>
+
+  <div class="col-2 col-sm-2 col-md-2 col-lg-2 d-none d-xs-none d-sm-none d-md-block d-lg-block ">
+    Tipo Sabor
   </div>
 
 </div>
@@ -62,22 +66,25 @@
         {{item.id}}
       </div>
 
-      <div class="col-3 col-sm-3 col-md-3 col-lg-3 ">
+      <div class="col-3 col-sm-3 col-md-3 col-lg-2 ">
         {{item.nome}}
       </div>
 
-      <div class="col-3 col-sm-3 col-md-3 col-lg-3 ">
+      <div class="col-3 col-sm-3 col-md-3 col-lg-2 d-none d-xs-none d-sm-none d-md-block d-lg-block ">
         {{item.descricao}}
       </div>
 
-      <div class="col-2 d-none d-xs-none d-sm-none d-md-block d-lg-block">
+      <div class="col-2 d-none d-xs-none d-sm-none d-md-block d-lg-block d-none d-xs-none d-sm-none d-md-block d-lg-block">
         {{item.tipo}}
       </div>
 
-      <div class="col-2 col-sm-2 col-md-3 col-lg-2 ">
+      <div class="col-2 col-sm-2 col-md-3 col-lg-2 d-none d-xs-none d-sm-none d-md-block d-lg-block">
         {{item.status}}
       </div>
 
+      <div class="col-2 col-sm-2 col-md-2 col-lg-2 d-none d-xs-none d-sm-none d-md-block d-lg-block ">
+        {{item.sabor_tipo}}
+      </div>
     </div>
   </div>
 </div>

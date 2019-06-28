@@ -18,6 +18,10 @@ export class EditSaborComponent implements OnInit {
   ]
   tipos = TIPOS_PRODUTOS;
 
+  sabor_tipos = [
+    'Doce', 'Salgado'
+  ]
+
   constructor(
     public dialogRef: MatDialogRef<EditSaborComponent>,
     public _sabores: SaboresService,
@@ -35,7 +39,8 @@ export class EditSaborComponent implements OnInit {
     nome: new FormControl(this.data.nome),
     descricao: new FormControl(this.data.descricao),
     status: new FormControl(this.data.status),
-    tipo: new FormControl(this.data.tipo)
+    tipo: new FormControl(this.data.tipo),
+    sabor_tipo: new FormControl(this.data.sabor_tipo)
   })
 
   editSabor(){
