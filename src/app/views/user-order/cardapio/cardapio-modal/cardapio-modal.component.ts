@@ -9,6 +9,7 @@ import { SaboresService } from '@services/sabores.service';
 })
 export class CardapioModalComponent implements OnInit {
 
+  panelOpenState = false;
   pasteis = {
     'doces' : [],
     'salgados' : []
@@ -25,7 +26,7 @@ export class CardapioModalComponent implements OnInit {
 
   ngOnInit() {
     if (document.documentElement.clientWidth < 1200) {
-      console.log(document.documentElement.clientWidth);
+
       this.dialog.updateSize("90%", "auto");
     }
 
@@ -35,7 +36,7 @@ export class CardapioModalComponent implements OnInit {
   getSabores() {
     this._sabores.getSabores().subscribe(res => {
       this.filterSabores(res['sabores']);
-      console.log(this.pizzas['doces']);
+
     }, err => {
       console.log(err);
     });
