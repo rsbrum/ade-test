@@ -49,9 +49,10 @@ import {
 } from '@angular/material';
 import { CartItemComponent } from './cart-modal/cart-item/cart-item.component';
 import { OpcionalModalComponent } from './cardapio/opcional-modal/opcional-modal.component';
+import { CardapioModalComponent } from './cardapio/cardapio-modal/cardapio-modal.component';
 
 @NgModule({
-  declarations: [UserOrderComponent, CardapioComponent, BannerComponent, FooterComponent, HeaderComponent, CardapioItemComponent, CartModalComponent, CartItemComponent, OpcionalModalComponent],
+  declarations: [UserOrderComponent, CardapioComponent, BannerComponent, FooterComponent, HeaderComponent, CardapioItemComponent, CartModalComponent, CartItemComponent, OpcionalModalComponent, CardapioModalComponent],
   imports: [
     FormsModule,
     ReactiveFormsModule,
@@ -95,7 +96,8 @@ import { OpcionalModalComponent } from './cardapio/opcional-modal/opcional-modal
   ],
   entryComponents: [
     CartModalComponent,
-    OpcionalModalComponent
+    OpcionalModalComponent,
+    CardapioModalComponent
   ]
 })
 export class UserOrderModule { }

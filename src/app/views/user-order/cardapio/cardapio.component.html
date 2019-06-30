@@ -6,20 +6,20 @@
 
 <div id="cardapio-info" class="row justify-content-center">
 
-  <div class="col-12 text-center mt-4" style="color: black; height: 50px;">
+  <div class="col-12 text-center mt-4" style="color: black; height: auto;">
     <h1>Escolha Pizzas ou Pasteis </h1>
     <p class="font-weight-bold small">Atendimento das 18:00 as 23:15 todos os dias! </p>
   </div>
 
   <div class="col-8 mt-5">
     <div class="row justify-content-center ">
-      <div class="col-3 d-flex">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-3 d-flex">
         <img class="m-auto" style="height:100px; width:100px;" src="../../../../assets/index/p-icon (1).png" alt="">
       </div>
-      <div class="col-3 d-flex">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-3 d-flex">
         <img class="m-auto" style="height:75px; width:75px;" src="../../../../assets/index/ar (2).png" alt="">
       </div>
-      <div class="col-3 d-flex">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-3 d-flex">
         <img class="m-auto" style="height:100px; width:100px;" src="../../../../assets/index/biscuit.png" alt="">
       </div>
     </div>
@@ -28,20 +28,20 @@
     </div>
 
     <div class="row">
-      <div class="col-4 d-flex text-center">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-4 d-flex text-center">
         <div class="m-auto">
           <img style="height:100px; width:100px;" src="../../../../assets/index/beer.png" alt="">
           <p class="font-weight-bold small  mt-2">Cerveja</p>
         </div>
       </div>
-      <div class="col-4 d-flex">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-4 d-flex">
         <div class="m-auto text-center">
           <img style="height:100px; width:100px;" src="../../../../assets/index/soda.png" alt="">
           <p class="font-weight-bold small  mt-2">Refrigerante/Sucos</p>
         </div>
 
       </div>
-      <div class="col-4 d-flex">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-4 d-flex">
         <div class="m-auto text-center">
           <img style="height:100px; width:100px;" src="../../../../assets/index/wine-glass.png" alt="">
           <p class="font-weight-bold small  mt-2">Vinhos/Espumantes</p>
@@ -52,7 +52,7 @@
 
     <div class="row mb-4 mt-4">
       <div class="col-12 d-flex">
-        <button class="btn bg-warning m-auto" style="height: 50px; width:250px;"> Nossos Sabores</button>
+        <button class="btn bg-warning m-auto" (click)="openCardapioModal()" style="height: 50px; width:250px;">Nossos Sabores</button>
       </div>
     </div>
   </div>

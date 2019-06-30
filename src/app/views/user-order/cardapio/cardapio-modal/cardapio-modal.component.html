@@ -1,0 +1,113 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+          <button class="btn" style="float: right;" [mat-dialog-close]="true">x</button>
+        </div>
+      </div>
+  <mat-accordion>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div class="d-flex">
+            <img class="m-auto" style="height:40px; width:40px;" src="../../../../assets/index/p-icon (1).png" alt="">
+          </div>
+        </mat-panel-title>
+        <mat-panel-description>
+          Sabores das Pizzas
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-accordion>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Doces
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div *ngFor="let item of pizzas['doces']" class="table-row">
+              <span>{{item.nome}}</span> <br>
+              <span style="font-size:12px;">{{item.descricao}}</span>
+          </div>
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Salgados
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div *ngFor="let item of pizzas['salgados']" class="table-row">
+              <span>{{item.nome}}</span> <br>
+              <span style="font-size:12px;">{{item.descricao}}</span>
+          </div>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+
+
+
+    </mat-expansion-panel>
+
+
+
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            <div class="d-flex">
+                <img class="m-auto" style="height: 40px; width:40px;" src="../../../../assets/index/biscuit.png" alt="">
+              </div>
+        </mat-panel-title>
+        <mat-panel-description>
+          Sabores dos Pasteis
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-accordion>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Doces
+              </mat-panel-title>
+              <mat-panel-description>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div *ngFor="let item of pasteis['doces']" class="table-row">
+                <span>{{item.nome}}</span> <br>
+                <span style="font-size:12px;">{{item.descricao}}</span>
+            </div>
+
+          </mat-expansion-panel>
+
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Salgados
+              </mat-panel-title>
+              <mat-panel-description>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div *ngFor="let item of pasteis['salgados']" class="table-row">
+                <span>{{item.nome}}</span> <br>
+                <span style="font-size:12px;">{{item.descricao}}</span>
+            </div>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+
+
+    </mat-expansion-panel>
+  </mat-accordion>
+
+</div>

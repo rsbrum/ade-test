@@ -29,6 +29,15 @@ html{
 a:hover {
   cursor: pointer;
 }
+
+.cardapio-class .mat-dialog-container {
+  margin-top: 55px;
+}
+
+.cdk-overlay-pane {
+  max-width: 90vw !important;
+}
+
 .btn {
     border-radius: 1px !important;
     font-weight: bold !important;

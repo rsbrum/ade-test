@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CardapioItem } from '@models/cardapio-item';
 import { Produto } from '@models/produto';
 import { ProdutosService } from '../../../core/services/produtos.service';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { CardapioModalComponent } from './cardapio-modal/cardapio-modal.component';
 
 @Component({
   selector: 'app-cardapio',
@@ -24,7 +26,8 @@ export class CardapioComponent implements OnInit {
   date = false;
 
   constructor(
-    private _produtos: ProdutosService) {
+    private _produtos: ProdutosService,
+    private dialog: MatDialog) {
     var d = new Date();
     var currtime = d.getHours() * 100 + d.getMinutes();
 /*
@@ -38,6 +41,24 @@ export class CardapioComponent implements OnInit {
 
   ngOnInit() {
     this.getProdutos();
+
+  }
+
+  openCardapioModal() {
+    const dialogRef = this.dialog.open(CardapioModalComponent, {
+      height: 'auto',
+      width: '50%',
+      panelClass: 'cardapio-class'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+/*
+      if(result === 'success'){
+        this.snackBar.open('Produto adicionado ao carrinho!', 'OK', {duration: 3000});
+        this.isInCart = true;
+      } */
+
+    });
   }
 
   getProdutos() {
