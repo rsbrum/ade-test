@@ -42,8 +42,7 @@ export class HeaderComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(CartModalComponent, {
-      height: '500px',
-      maxHeight: '1000px',
+      height: 'auto',
       width: '80%',
       panelClass: 'cart-modal'
     });

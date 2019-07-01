@@ -4,13 +4,51 @@
   <div class="row  h-100">
 
     <div class="m-auto col-10 col-sm-11 col-md-11 col-lg-4 shadow p-5 text-center">
+      <div class="mb-3">
+        <h3>Pedido</h3>
 
+        <div *ngFor="let item of produtos" class="table-row mt-2" style="text-align: start">
+          <p>{{item.nome}}</p>
+          <div class='small font-italic'>
+            <div *ngIf="item.sabores == 1">
+              <span *ngFor="let sabor of item.sabores_info">{{sabor.nome}}, </span>
+            </div>
+
+            <div *ngIf="item.opcional == 1">
+              <span *ngFor="let opc of item.opcionais_info">{{opc.nome}}, </span>
+            </div>
+          </div>
+          <p class='mt-1 font-weight-bold'>R$ {{item.preco}}</p>
+        </div>
+
+      </div>
+
+      <div>
+        <p><span class="font-weight-bold">TOTAL: </span>R$ {{valor_total}}</p>
+      </div>
       <p>Escolha o tipo de entrega</p>
       <div class="mb-3" style="text-align: start;">
-        <div><input (click)="setLocal()" type="checkbox" class="form-check-input f-left"> <span>No local</span>
+        <!--           <mat-radio-group aria-label="Select an option">
+              <mat-radio-button  value="1">Retirar no local</mat-radio-button>
+              <mat-radio-button  value="2">Tele-entrega (+ R$ 8,00)</mat-radio-button>
+          </mat-radio-group> -->
+        <div class="form-check">
+          <input (click)="setLocal()" class=" form-check-input" type="radio" name="exampleRadios">
+          <label class="form-check-label">
+            Retirar no local
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input (click)="setTele()" class="form-check-input" type="radio" name="exampleRadios">
+          <label class="form-check-label" for="exampleRadios1">
+            Tele-entrega (+ R$ 8,00)
+          </label>
+        </div>
+        <!--         <div><input " type="checkbox" class="form-check-input f-left"> <span>No local</span>
         </div>
         <div><input (click)="setTele()" type="checkbox" class="form-check-input"> <span>Tele-entrega (+ R$ 8,00)</span>
-        </div>
+        </div> -->
       </div>
 
       <div *ngIf="show_tele_error" class='alert alert-danger mt-3'>
@@ -18,9 +56,9 @@
       </div>
 
       <form [formGroup]="pedidoForm" *ngIf="show_pedidoForm">
-          <div *ngIf="show_pedidoForm_error" class='alert alert-danger mt-3'>
-              <p>Preencha todos os campos!</p>
-            </div>
+        <div *ngIf="show_pedidoForm_error" class='alert alert-danger mt-3'>
+          <p>Preencha todos os campos!</p>
+        </div>
         <p class="mb-3 font-weight-bold">Informe o seu endereco!</p>
         <div class="form-group text-left">
           <label>Rua</label>
@@ -38,35 +76,36 @@
         </div>
 
         <div class="form-group text-left">
-            <label>Complemento</label>
-            <input class="form-control" formControlName="complemento">
+          <label>Complemento</label>
+          <input placeholder="Casa, apartamento ou proximadade" class="form-control" formControlName="complemento">
         </div>
 
         <div class="form-group text-left">
           <label>Contato</label>
           <!-- <input class="form-control" placeholder="(54) 996523519" formControlName="contato"> -->
-          <input class="form-control" [textMask]="{mask: mask}" placeholder="54 9 96514419" formControlName="contato"
+          <input class="form-control" [textMask]="{mask: mask}" placeholder="54 9 99999999" formControlName="contato"
             [(ngModel)]="myModel" type="text" />
         </div>
 
       </form>
       <div *ngIf="show_localForm_error" class='alert alert-danger mt-3'>
-          <p>Preencha todos os campos!</p>
-        </div>
+        <p>Preencha todos os campos!</p>
+      </div>
       <div class="form-group text-left" *ngIf="local">
-          <label>Contato</label>
-          <!-- <input class="form-control" placeholder="(54) 996523519" formControlName="contato"> -->
-          <form action="" [formGroup]="localForm">
-              <input class="form-control" [textMask]="{mask: mask}" placeholder="54 9 96514419" formControlName="contato"
-              [(ngModel)]="myModel" type="text" />
-          </form>
+        <label>Contato</label>
+        <!-- <input class="form-control" placeholder="(54) 996523519" formControlName="contato"> -->
+        <form action="" [formGroup]="localForm">
+          <input class="form-control" [textMask]="{mask: mask}" placeholder="54 9 96514419" formControlName="contato"
+            [(ngModel)]="myModel" type="text" />
+        </form>
       </div>
 
-      <button *ngIf="!clicked" (click)="callback()" [disabled]="!local && !entrega"class="btn mt-2 shadow d-block m-auto bg-dark"
-      style="color:white; border: 1px solid rgba(0,0,0,0.1)">Finalizar</button>
-    <div *ngIf="clicked" class=" m-auto" style="height: 25px; width: 25px;">
-      <mat-spinner class="mt-2" [diameter]="25"></mat-spinner>
-    </div>
+      <button *ngIf="!clicked" (click)="callback()" [disabled]="!local && !entrega"
+        class="btn mt-2 shadow d-block m-auto bg-dark"
+        style="color:white; border: 1px solid rgba(0,0,0,0.1)">Finalizar</button>
+      <div *ngIf="clicked" class=" m-auto" style="height: 25px; width: 25px;">
+        <mat-spinner class="mt-2" [diameter]="25"></mat-spinner>
+      </div>
     </div>
   </div>
 </div>

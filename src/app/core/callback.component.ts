@@ -21,6 +21,8 @@ export class CallbackComponent implements OnInit {
   show_pedidoForm_error: Boolean = false;
   show_localForm_error: Boolean = false;
   user_id;
+  valor_total = 0;
+  produtos;
 
   pedidoForm = new FormGroup({
     rua: new FormControl('', Validators.required),
@@ -48,15 +50,35 @@ export class CallbackComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
       this.user_id = params['user_id'];
     });
+
+    this.produtos = JSON.parse(localStorage.getItem('cart-items'));
+    console.log(this.produtos);
+    this.produtos.forEach(element => {
+      this.valor_total += parseFloat(element.preco);
+    });
+
   }
 
   setLocal() {
-    this.local = !this.local;
+
+    if(this.entrega == true) {
+      this.valor_total = this.valor_total - 8;
+    }
+
+    this.local = true;
+    this.entrega = false;
+    this.show_pedidoForm = false;
   }
 
   setTele() {
-    this.show_pedidoForm = !this.show_pedidoForm;
-    this.entrega = !this.entrega;
+    if(this.entrega == false){
+      this.valor_total += 8;
+    }
+
+    this.show_pedidoForm = true;
+    this.entrega = true;
+    this.local = false;
+
   }
 
   cleanContato(str) {

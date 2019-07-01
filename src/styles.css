@@ -56,6 +56,7 @@ a:hover {
 .cart-modal .mat-dialog-container{
     max-width: 100% !important;
     max-height: 100% !important;
+    height: auto !important;
     border-radius: 0px;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
     z-index: 1020;

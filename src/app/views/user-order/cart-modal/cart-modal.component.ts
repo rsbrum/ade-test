@@ -15,6 +15,7 @@ import { PedidosService } from '@services/pedidos.service';
 export class CartModalComponent implements OnInit {
 
   public cartItems;
+  public cartEmpty = true;
   public total;
   public total_display;
   public errorCupom = false;
@@ -45,22 +46,33 @@ export class CartModalComponent implements OnInit {
 
   ngOnInit() {
     if (document.documentElement.clientWidth < 1200) {
-      this.dialogRef.updateSize("99%", "500px");
+      this.dialogRef.updateSize("99%", "auto");
     }
 
     this.getCartItems();
     this.calcularTotal();
 
+    console.log(this.cartEmpty)
   }
 
   calcularTotal() {
-    var value = 0.0;
-    this.cartItems.forEach(element => {
-      value += parseFloat(element.preco);
-    });
 
-    this.total = value;
-    this.total_display = this.total.toFixed(2).replace('.', ',')
+    var value = 0.0;
+
+    if(this.cartItems) {
+
+      this.cartItems.forEach(element => {
+        value += parseFloat(element.preco);
+      });
+
+      this.total = value;
+      this.total_display = this.total.toFixed(2).replace('.', ',')
+
+    } else {
+      this.total = value;
+      this.total_display = this.total.toFixed(2).replace('.', ',')
+    }
+
 
   }
 
@@ -69,7 +81,18 @@ export class CartModalComponent implements OnInit {
   }
 
   getCartItems(): void {
-    this.cartItems = JSON.parse(localStorage.getItem('cart-items'));
+
+    if(JSON.parse(localStorage.getItem('cart-items'))) {
+      this.cartItems = JSON.parse(localStorage.getItem('cart-items'));
+      if(this.cartItems.length == 0) {
+        this.cartEmpty = true;
+      } else {
+        this.cartEmpty = false;
+      }
+    } else {
+      this.cartEmpty = true;
+    }
+
   }
 
   deleteItem(id): void{
