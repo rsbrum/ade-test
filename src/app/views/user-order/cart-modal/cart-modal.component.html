@@ -10,7 +10,7 @@
 
   <div class="row" style="min-height: 50px;">
     <div class="col-12">
-      <div class="d-flex">
+      <div *ngIf="cartEmpty" class="d-flex">
           <p class="m-auto p-3">O carrinho esta vazio</p>
       </div>
 

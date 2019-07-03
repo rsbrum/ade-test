@@ -8,7 +8,7 @@
         <h3>Pedido</h3>
 
         <div *ngFor="let item of produtos" class="table-row mt-2" style="text-align: start">
-          <p>{{item.nome}}</p>
+          <p>{{item.nome}} - {{item.quantidade}}</p>
           <div class='small font-italic'>
             <div *ngIf="item.sabores == 1">
               <span *ngFor="let sabor of item.sabores_info">{{sabor.nome}}, </span>
@@ -25,6 +25,12 @@
 
       <div>
         <p><span class="font-weight-bold">TOTAL: </span>R$ {{valor_total}}</p>
+      </div>
+      <div class="mb-2">
+        <p>Observacao sobre o pedido:</p>
+        <textarea class="form-control " rows="4" cols="50" placeholder="Pizza sem tomate, sem maionese...">
+
+        </textarea>
       </div>
       <p>Escolha o tipo de entrega</p>
       <div class="mb-3" style="text-align: start;">
@@ -95,7 +101,7 @@
         <label>Contato</label>
         <!-- <input class="form-control" placeholder="(54) 996523519" formControlName="contato"> -->
         <form action="" [formGroup]="localForm">
-          <input class="form-control" [textMask]="{mask: mask}" placeholder="54 9 96514419" formControlName="contato"
+          <input class="form-control" [textMask]="{mask: mask}" placeholder="54 9 99999999" formControlName="contato"
             [(ngModel)]="myModel" type="text" />
         </form>
       </div>
