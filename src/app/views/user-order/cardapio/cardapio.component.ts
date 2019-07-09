@@ -46,8 +46,7 @@ export class CardapioComponent implements OnInit {
 
   openCardapioModal() {
     const dialogRef = this.dialog.open(CardapioModalComponent, {
-      height: '200px',
-      minHeight: '200px',
+      height: 'auto',
       width: '50%',
       panelClass: 'cardapio-class'
     });

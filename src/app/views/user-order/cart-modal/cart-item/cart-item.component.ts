@@ -10,13 +10,13 @@ export class CartItemComponent implements OnInit {
 
   @Input() data;
   @Output() deleteEvent = new EventEmitter<String>();
+  @Output() updateTotalEvent = new EventEmitter<String>();
   selected = 1;
 
   constructor() { }
 
   ngOnInit() {
-    console.log(this.selected);
-    console.log(this.data);
+
   }
 
   deleteItem(): void {
@@ -25,7 +25,6 @@ export class CartItemComponent implements OnInit {
 
   onChangeSelected() {
     var produtos = JSON.parse(localStorage.getItem('cart-items'));
-    console.log(produtos);
 
     produtos.forEach(produto => {
       if(produto.id === this.data.id) {
@@ -34,5 +33,6 @@ export class CartItemComponent implements OnInit {
       }
     })
 
+    this.updateTotalEvent.emit(this.data.id);
   }
 }

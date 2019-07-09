@@ -10,7 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class CallbackComponent implements OnInit {
   public myModel = ''
-  public mask = [ /[1-9]/, /\d/, ' ', /\d/, ' ', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/];
+  public mask = [/[1-9]/, /\d/, ' ', /\d/, ' ', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/];
 
   apiUrl = environment.apiUrl;
   clicked: Boolean = false;
@@ -23,6 +23,7 @@ export class CallbackComponent implements OnInit {
   user_id;
   valor_total = 0;
   produtos;
+  endereco;
 
   pedidoForm = new FormGroup({
     rua: new FormControl('', Validators.required),
@@ -36,7 +37,9 @@ export class CallbackComponent implements OnInit {
     contato: new FormControl('', Validators.required)
   });
 
-
+  complementoForm = new FormGroup({
+    complemento: new FormControl('', Validators.required)
+  });
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -59,11 +62,19 @@ export class CallbackComponent implements OnInit {
       this.valor_total += parseFloat(element.preco);
     });
 
+    this.endereco = JSON.parse(localStorage.getItem('endereco'));
+
+    if (this.endereco) {
+      this.pedidoForm.get('rua').setValue(this.endereco[0].rua);
+      this.pedidoForm.get('bairro').setValue(this.endereco[0].bairro);
+      this.pedidoForm.get('numero').setValue(this.endereco[0].numero);
+      this.pedidoForm.get('complemento').setValue(this.endereco[0].complemento);
+    }
   }
 
   setLocal() {
 
-    if(this.entrega == true) {
+    if (this.entrega == true) {
       this.valor_total = this.valor_total - 8;
     }
 
@@ -73,7 +84,7 @@ export class CallbackComponent implements OnInit {
   }
 
   setTele() {
-    if(this.entrega == false){
+    if (this.entrega == false) {
       this.valor_total += 8;
     }
 
@@ -85,8 +96,8 @@ export class CallbackComponent implements OnInit {
 
   cleanContato(str) {
     var buffer = "";
-    for(var x = 0; x< str.length; x++) {
-      if(str[x] != ' ') {
+    for (var x = 0; x < str.length; x++) {
+      if (str[x] != ' ') {
         buffer += str[x]
       }
     }
@@ -98,6 +109,15 @@ export class CallbackComponent implements OnInit {
 
     this.clicked = true;
 
+    var end = [{
+      'rua': this.pedidoForm.get('rua').value,
+      'bairro': this.pedidoForm.get('bairro').value,
+      'numero': this.pedidoForm.get('numero').value,
+      'complemento': this.pedidoForm.get('complemento').value
+    }];
+
+    localStorage.setItem('endereco', JSON.stringify(end));
+
     var url = window.location.href;
     var str = url.split('=')[1];
     str = str.split('&')[0];
@@ -107,18 +127,19 @@ export class CallbackComponent implements OnInit {
     var value = 0;
     var endereco = "";
     var contato = "";
+    var complemento = this.complementoForm.get('complemento').value;
 
     produtos.forEach(element => {
       value += parseFloat(element.preco);
     });
 
-    if(this.local == true && this.entrega == true) {
+    if (this.local == true && this.entrega == true) {
       this.show_tele_error = true;
       this.clicked = false;
       return;
     }
 
-    if(!this.pedidoForm.valid && this.entrega == true) {
+    if (!this.pedidoForm.valid && this.entrega == true) {
       this.show_pedidoForm_error = true;
       this.clicked = false;
       return;
@@ -126,23 +147,23 @@ export class CallbackComponent implements OnInit {
 
     this.show_pedidoForm_error = false;
 
-    if(this.entrega == true) {
+    if (this.entrega == true) {
       value += 8;
       endereco = this.pedidoForm.get('bairro').value + " & " + this.pedidoForm.get('rua').value + " & "
-      + this.pedidoForm.get('numero').value + " & " + this.pedidoForm.get('complemento').value;
+        + this.pedidoForm.get('numero').value + " & " + this.pedidoForm.get('complemento').value;
       contato = this.cleanContato(this.pedidoForm.get('contato').value);
     }
 
-    if(this.local == true) {
+    if (this.local == true) {
       endereco = "Retirar no local";
 
-      if(!this.localForm.valid) {
+      if (!this.localForm.valid) {
         this.show_localForm_error = true;
         this.clicked = false;
         return;
       }
 
-      contato =  this.cleanContato(this.localForm.get('contato').value);
+      contato = this.cleanContato(this.localForm.get('contato').value);
     }
 
     if (this.user_id) {
@@ -153,8 +174,10 @@ export class CallbackComponent implements OnInit {
         "valor_total": value,
         "produtos": produtos,
         "endereco": endereco,
-        "contato": contato
+        "contato": contato,
+        "complemento": complemento
       }
+
       //normal user
       this._pedidos.addPedido(data_pedido).subscribe(
         res => {
@@ -175,21 +198,22 @@ export class CallbackComponent implements OnInit {
       this._http.post(this.apiUrl + '/api/auth/callback', data).subscribe(
         res => {
           var user_id = res["user"]["id"];
-/*           var produtos = JSON.parse(localStorage.getItem('cart-items'));
-          var value = 0;
-          var endereco = this.pedidoForm.get('bairro').value + " & " + this.pedidoForm.get('rua').value + " & " + this.pedidoForm.get('numero').value;
-          var contato = this.cleanContato(this.pedidoForm.get('contato').value);
+          /*           var produtos = JSON.parse(localStorage.getItem('cart-items'));
+                    var value = 0;
+                    var endereco = this.pedidoForm.get('bairro').value + " & " + this.pedidoForm.get('rua').value + " & " + this.pedidoForm.get('numero').value;
+                    var contato = this.cleanContato(this.pedidoForm.get('contato').value);
 
-          produtos.forEach(element => {
-            value += parseFloat(element.preco);
-          });
-*/
+                    produtos.forEach(element => {
+                      value += parseFloat(element.preco);
+                    });
+          */
           var data = {
             "user_id": user_id,
             "valor_total": value,
             "produtos": produtos,
             "endereco": endereco,
-            "contato": contato
+            "contato": contato,
+            "complemento": complemento
           }
 
           this._pedidos.addPedido(data).subscribe(

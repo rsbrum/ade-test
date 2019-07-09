@@ -52,17 +52,31 @@ export class CartModalComponent implements OnInit {
     this.getCartItems();
     this.calcularTotal();
 
-    console.log(this.cartEmpty)
+  }
+
+  updateTotalEvent() {
+    this.calcularTotal();
+
   }
 
   calcularTotal() {
 
     var value = 0.0;
-
+    var cart = JSON.parse(localStorage.getItem('cart-items'));
     if(this.cartItems) {
+      var precos = [];
+      var x = 0.0;
 
-      this.cartItems.forEach(element => {
-        value += parseFloat(element.preco);
+      cart.forEach(element => {
+        x += parseFloat(element.preco);
+        precos.push(x * element.quantidade);
+        console.log(element.quantidade);
+      });
+
+      console.log(precos);
+
+      precos.forEach(element => {
+        value += parseFloat(element);
       });
 
       this.total = value;

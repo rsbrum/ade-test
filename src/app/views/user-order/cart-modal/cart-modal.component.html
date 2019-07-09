@@ -15,7 +15,9 @@
       </div>
 
       <div *ngFor="let item of cartItems">
-        <app-cart-item [data]="item" (deleteEvent)="deleteItem($event)"></app-cart-item>
+        <app-cart-item [data]="item" (deleteEvent)="deleteItem($event)"
+          (updateTotalEvent)="updateTotalEvent($event)"
+        ></app-cart-item>
       </div>
 
     </div>

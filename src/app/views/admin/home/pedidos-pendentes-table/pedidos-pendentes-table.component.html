@@ -84,7 +84,12 @@
             </span>
             <br>
           </span>
-
+          <span *ngIf="!item.complemento == ''">
+            <span style="font-weight: bold;">OBS: </span>
+            <span style="font-size: 14px;" *ngFor="let sabor of produto.sabores_info">
+              {{item.complemento}},
+            </span>
+          </span>
           <div class="w-100" style="border-bottom: 1px solid black"></div>
         </span>
       </div>

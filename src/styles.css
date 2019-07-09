@@ -32,7 +32,7 @@ a:hover {
 
 .cardapio-class .mat-dialog-container {
   margin-top: 55px;
-  height:200px;
+  height:auto;
 }
 
 .cdk-overlay-pane {
