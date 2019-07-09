@@ -22,6 +22,7 @@ export class CallbackComponent implements OnInit {
   show_localForm_error: Boolean = false;
   user_id;
   valor_total = 0;
+  valor_total_display;
   produtos;
   endereco;
 
@@ -57,11 +58,20 @@ export class CallbackComponent implements OnInit {
     });
 
     this.produtos = JSON.parse(localStorage.getItem('cart-items'));
-    console.log(this.produtos);
+
+    var precos = [];
+    var x = 0.0;
+
     this.produtos.forEach(element => {
-      this.valor_total += parseFloat(element.preco);
+      x = parseFloat(element.preco);
+      precos.push(x * element.quantidade);
     });
 
+    precos.forEach(element => {
+      this.valor_total += parseFloat(element);
+    });
+
+    this.valor_total_display = this.valor_total.toFixed(2).replace('.', ',')
     this.endereco = JSON.parse(localStorage.getItem('endereco'));
 
     if (this.endereco) {
@@ -129,8 +139,20 @@ export class CallbackComponent implements OnInit {
     var contato = "";
     var complemento = this.complementoForm.get('complemento').value;
 
-    produtos.forEach(element => {
+/*     produtos.forEach(element => {
       value += parseFloat(element.preco);
+    });
+ */
+    var precos = [];
+    var x = 0.0;
+
+    produtos.forEach(element => {
+      x = parseFloat(element.preco);
+      precos.push(x * element.quantidade);
+    });
+
+    precos.forEach(element => {
+      value += parseFloat(element);
     });
 
     if (this.local == true && this.entrega == true) {
