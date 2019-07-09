@@ -35,6 +35,10 @@ a:hover {
   height:auto;
 }
 
+.opcional-modal .mat-dialog-container {
+  height:auto !important;
+}
+
 .cdk-overlay-pane {
   max-width: 90vw !important;
 }

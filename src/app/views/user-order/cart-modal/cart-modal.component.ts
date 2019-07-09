@@ -63,12 +63,13 @@ export class CartModalComponent implements OnInit {
 
     var value = 0.0;
     var cart = JSON.parse(localStorage.getItem('cart-items'));
+
     if(this.cartItems) {
       var precos = [];
       var x = 0.0;
 
       cart.forEach(element => {
-        x += parseFloat(element.preco);
+        x = parseFloat(element.preco);
         precos.push(x * element.quantidade);
         console.log(element.quantidade);
       });
