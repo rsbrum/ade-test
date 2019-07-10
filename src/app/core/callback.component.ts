@@ -10,7 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class CallbackComponent implements OnInit {
   public myModel = ''
-  public mask = [/[1-9]/, /\d/, ' ', /\d/, ' ', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/];
+  public mask = [/[1-9]/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/];
 
   apiUrl = environment.apiUrl;
   clicked: Boolean = false;
