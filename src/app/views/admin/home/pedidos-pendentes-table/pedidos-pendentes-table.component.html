@@ -84,14 +84,17 @@
             </span>
             <br>
           </span>
+
+          <div class="w-100 m-2" style="border-bottom: 1px solid rgba(0,0,0,0.2)"></div>
+        </span>
+
           <span *ngIf="!item.complemento == ''">
             <span style="font-weight: bold;">OBS: </span>
             <span style="font-size: 14px;">
               {{item.complemento}},
             </span>
           </span>
-          <div class="w-100" style="border-bottom: 1px solid black"></div>
-        </span>
+
       </div>
       <div class="col-12 col-sm-12 col-md-2 col-lg-2">
         <span *ngIf="item.status === 'Pendente'" class="badge badge-warning">Pendente</span>

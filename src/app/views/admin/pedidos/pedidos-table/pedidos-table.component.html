@@ -82,14 +82,15 @@
             </span>
             <br>
           </span>
-          <span *ngIf="!item.complemento == ''">
-            <span style="font-weight: bold;">OBS: </span>
-            <span style="font-size: 14px;">
-              {{item.complemento}},
-            </span>
-          </span>
+          <div class="w-100 m-2" style="border-bottom: 1px solid rgba(0,0,0,0.2)"></div>
         </span>
 
+        <span *ngIf="!item.complemento == ''">
+          <span style="font-weight: bold;">OBS: </span>
+          <span style="font-size: 14px;">
+            {{item.complemento}},
+          </span>
+        </span>
 
       </div>
       <div class="col-12 col-sm-12 col-md-2 col-lg-2">

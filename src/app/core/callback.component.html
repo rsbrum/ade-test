@@ -87,14 +87,16 @@
         <div class="form-group text-left">
           <label>Contato</label>
           <!-- <input class="form-control" placeholder="(54) 996523519" formControlName="contato"> -->
-          <input class="form-control" [textMask]="{mask: mask}" placeholder="54 9 99999999" formControlName="contato"
+          <input class="form-control" [textMask]="{mask: mask, placeholderChar: '\u2000'}" placeholder="54 9 99999999" formControlName="contato"
             [(ngModel)]="myModel" type="text" />
         </div>
 
       </form>
+
       <div *ngIf="show_localForm_error" class='alert alert-danger mt-3'>
         <p>Preencha todos os campos!</p>
       </div>
+
       <div class="form-group text-left" *ngIf="local">
         <label>Contato</label>
         <!-- <input class="form-control" placeholder="(54) 996523519" formControlName="contato"> -->
