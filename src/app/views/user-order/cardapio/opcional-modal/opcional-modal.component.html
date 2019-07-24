@@ -11,7 +11,7 @@
       <select class="form-control">
         <option value="" selected disabled hidden>Escolha um sabor</option>
         <option *ngFor="let sabor of sabores" [value]="sabor" (click)="selectSabor(sabor, i)">
-         {{sabor.codigo}} {{sabor.nome}} -
+          {{sabor.codigo}} {{sabor.nome}} -
           <span style="font-weight: bold !important;">{{sabor.descricao}}</span>
         </option>
       </select>
@@ -19,9 +19,9 @@
   </div>
 
   <div *ngIf="data.opcional" class="row mt-2">
-
+    <h3 *ngIf="data.opcionais.length > 0">Opcionais</h3>
     <div *ngFor="let opcional of opcionais" class="col-12 col-sm-12 col-md-6 col-lg-6">
-        <h3>Opcionais</h3>
+
       <div class="col-12 table-row">
         <input (click)="selectOpcional(opcional)" type="checkbox" class="form-check-input">
         <span>{{opcional.nome}}</span> <br>
@@ -34,8 +34,8 @@
   <div class="row mt-2">
     <div class="col-12 ">
       <h3>Quantidade</h3>
-      <input type="number" class="mt-3 form-control"
-      min="1" max="100" [(ngModel)]="quantidade" (click)="onChangeSelected()">
+      <input type="number" class="mt-3 form-control" min="1" max="100" [(ngModel)]="quantidade"
+        (click)="onChangeSelected()">
     </div>
   </div>
 

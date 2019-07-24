@@ -31,6 +31,9 @@ export class CartItemComponent implements OnInit {
   onChangeSelected() {
     var produtos = JSON.parse(localStorage.getItem('cart-items'));
 
+    this.price= this.data["preco"] * this.selected;
+    this.price_display = this.price.toFixed(2).replace('.', ',');
+
     produtos.forEach(produto => {
       if(produto.id === this.data.id) {
         produto["quantidade"] = this.selected;
