@@ -8,7 +8,7 @@
         <h3>Pedido</h3>
 
         <div *ngFor="let item of produtos" class="table-row mt-2" style="text-align: start">
-          <p>{{item.nome}} - {{item.quantidade}}</p>
+          <p>{{item.nome}} - Quantidade: {{item.quantidade}}</p>
           <div class='small font-italic'>
             <div *ngIf="item.sabores == 1">
               <span *ngFor="let sabor of item.sabores_info">{{sabor.nome}}, </span>
@@ -18,7 +18,7 @@
               <span *ngFor="let opc of item.opcionais_info">{{opc.nome}}, </span>
             </div>
           </div>
-          <p class='mt-1 font-weight-bold'>R$ {{item.preco}}</p>
+          <p class='mt-1 font-weight-bold'>R$ {{pipe(item.preco, item.quantidade)}}</p>
         </div>
 
       </div>
@@ -26,11 +26,14 @@
       <div>
         <p><span class="font-weight-bold">TOTAL: </span>R$ {{valor_total_display}}</p>
       </div>
+
       <div [formGroup]="complementoForm" class="mb-2">
         <p>Observacao sobre o pedido:</p>
         <textarea formControlName="complemento"class="form-control " rows="4" cols="50" placeholder="Pizza sem tomate, sem maionese..."></textarea>
       </div>
+
       <p>Escolha o tipo de entrega</p>
+
       <div class="mb-3" style="text-align: start;">
         <!--           <mat-radio-group aria-label="Select an option">
               <mat-radio-button  value="1">Retirar no local</mat-radio-button>

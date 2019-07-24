@@ -77,7 +77,7 @@
             </span>
           </span>
           <br>
-          <span *ngIf="produto.opcional == '1'">
+          <span *ngIf="produto.opcional == '1' && produto.opcionais_info.length > 0">
             <span style="font-weight: bold;">Opcionais: </span>
             <span style="font-size: 14px;" *ngFor="let opcional of produto.opcionais_info">
               {{opcional.nome}},

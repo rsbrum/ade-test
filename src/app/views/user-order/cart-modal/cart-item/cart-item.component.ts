@@ -12,11 +12,16 @@ export class CartItemComponent implements OnInit {
   @Output() deleteEvent = new EventEmitter<String>();
   @Output() updateTotalEvent = new EventEmitter<String>();
   selected = 1;
+  price_display;
+  price = 0.0;
 
   constructor() { }
 
   ngOnInit() {
-
+    console.log(this.data);
+    this.selected = this.data["quantidade"];
+    this.price= this.data["preco"] * this.data["quantidade"];
+    this.price_display = this.price.toFixed(2).replace('.', ',')
   }
 
   deleteItem(): void {

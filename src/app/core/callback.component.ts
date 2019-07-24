@@ -93,6 +93,10 @@ export class CallbackComponent implements OnInit {
     this.show_pedidoForm = false;
   }
 
+  pipe(preco, quantidade) {
+    var price = preco * quantidade;
+    return price.toFixed(2).replace('.', ',');
+  }
   setTele() {
     if (this.entrega == false) {
       this.valor_total += 8;

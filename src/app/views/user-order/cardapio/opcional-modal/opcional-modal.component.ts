@@ -18,6 +18,7 @@ export class OpcionalModalComponent implements OnInit {
   sabor_quantidade = [];
   adicional = 0.0;
   adicional_display;
+  quantidade = 1;
 
   constructor(
     public _cartService: CartService,
@@ -75,9 +76,15 @@ export class OpcionalModalComponent implements OnInit {
     this.data["sabores_info"] = this.sabores_pedido;
     this.data["opcionais_info"] = this.opcionais_pedido;
     this.data["preco"] = parseFloat(this.data["preco"]) + this.adicional;
+    this.data["quantidade"] = this.quantidade;
     this._cartService.addItem(this.data);
     this.updateCartHeader();
     this.dialogRef.close('success');
+
+  }
+
+  onChangeSelected() {
+    console.log(this.quantidade);
 
   }
 
