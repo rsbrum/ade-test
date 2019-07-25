@@ -19,6 +19,7 @@ export class OpcionalModalComponent implements OnInit {
   adicional = 0.0;
   adicional_display;
   quantidade = 1;
+  sabores_error = false;
 
   constructor(
     public _cartService: CartService,
@@ -74,13 +75,22 @@ export class OpcionalModalComponent implements OnInit {
   }
 
   addToCart(): void {
-    this.data["sabores_info"] = this.sabores_pedido;
-    this.data["opcionais_info"] = this.opcionais_pedido;
-    this.data["preco"] = parseFloat(this.data["preco"]) + this.adicional;
-    this.data["quantidade"] = this.quantidade;
-    this._cartService.addItem(this.data);
-    this.updateCartHeader();
-    this.dialogRef.close('success');
+
+    if(this.sabores_pedido.length > 0) {
+      this.data["sabores_info"] = this.sabores_pedido;
+      this.data["opcionais_info"] = this.opcionais_pedido;
+      this.data["preco"] = parseFloat(this.data["preco"]) + this.adicional;
+      this.data["quantidade"] = this.quantidade;
+      this._cartService.addItem(this.data);
+      this.updateCartHeader();
+      this.dialogRef.close('success');
+    } else {
+
+      this.sabores_error = true;
+
+    }
+
+
 
   }
 

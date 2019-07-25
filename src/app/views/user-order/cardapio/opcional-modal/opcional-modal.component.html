@@ -39,7 +39,11 @@
         (click)="onChangeSelected()">
     </div>
   </div>
-
+  <div class="row mt-2 mb-n">
+    <div *ngIf="sabores_error" class="col-12 alert alert-danger text-center">
+      <p>Escolha os sabores!</p>
+    </div>
+  </div>
   <div class="row">
     <div class="col">
       <h4 class="mt-3">Adicional: R$ {{adicional_display}}</h4>
