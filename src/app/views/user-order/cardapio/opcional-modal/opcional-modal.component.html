@@ -8,9 +8,9 @@
   <div *ngIf="data.sabores" class="row">
     <div *ngFor="let saborRow of sabor_quantidade; let i=index" class="col-12 col-sm-12 col-md-12 col-lg-12">
       <label for="">Sabor {{i + 1}}</label>
-      <select class="form-control">
+      <select ngModel (ngModelChange)="selectSabor($event)" class="form-control">
         <option value="" selected disabled hidden>Escolha um sabor</option>
-        <option *ngFor="let sabor of sabores" [value]="sabor" (click)="selectSabor(sabor, i)">
+        <option *ngFor="let sabor of sabores" [ngValue]="sabor" >
           {{sabor.codigo}} {{sabor.nome}} -
           <span style="font-weight: bold !important;">{{sabor.descricao}}</span>
         </option>

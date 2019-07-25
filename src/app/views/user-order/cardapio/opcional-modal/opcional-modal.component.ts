@@ -75,7 +75,7 @@ export class OpcionalModalComponent implements OnInit {
   }
 
   addToCart(): void {
-
+    console.log(this.sabores_pedido);
     if(this.sabores_pedido.length > 0 ) {
       this.data["sabores_info"] = this.sabores_pedido;
       this.data["opcionais_info"] = this.opcionais_pedido;
@@ -152,8 +152,9 @@ export class OpcionalModalComponent implements OnInit {
     )
   }
 
-  selectSabor(sabor, index) {
-    this.sabores_pedido[index] = sabor;
+  selectSabor(ev) {
+
+    this.sabores_pedido.push(ev);
   }
 
 }
