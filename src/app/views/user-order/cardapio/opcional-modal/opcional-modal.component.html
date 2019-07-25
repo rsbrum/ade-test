@@ -19,7 +19,8 @@
   </div>
 
   <div *ngIf="data.opcional" class="row mt-2">
-    <h3 *ngIf="data.opcionais.length > 0">Opcionais</h3>
+    <h3 class="col-12 pt-1 pb-1" *ngIf="opcionais.length > 0">Opcionais</h3>
+
     <div *ngFor="let opcional of opcionais" class="col-12 col-sm-12 col-md-6 col-lg-6">
 
       <div class="col-12 table-row">

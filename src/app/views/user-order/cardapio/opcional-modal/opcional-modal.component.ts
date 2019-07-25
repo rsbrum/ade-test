@@ -12,7 +12,7 @@ import { CartService } from '@services/cart.service';
 export class OpcionalModalComponent implements OnInit {
 
   public sabores;
-  public opcionais;
+  public opcionais = [];
   sabores_pedido = [];
   opcionais_pedido = [];
   sabor_quantidade = [];
@@ -42,6 +42,7 @@ export class OpcionalModalComponent implements OnInit {
 
     this.getSabores();
     this.getOpcionais();
+    console.log(this.opcionais);
   }
 
   updateOpcionalAdicional() {
