@@ -20,7 +20,9 @@ export class CallbackComponent implements OnInit {
   show_tele_error: Boolean = false;
   show_pedidoForm_error: Boolean = false;
   show_localForm_error: Boolean = false;
+  formaPagamento: String[] = ['DINHEIRO', 'CARTAO VISA', 'CARTAO MASTER', 'CARTAO BANRI'];
   user_id;
+  pagamento;
   valor_total = 0;
   valor_total_display;
   produtos;
@@ -53,6 +55,9 @@ export class CallbackComponent implements OnInit {
    * Facebook callback component
    */
   ngOnInit() {
+
+    this.pagamento = this.formaPagamento[0];
+
     this.activatedRoute.queryParams.subscribe(params => {
       this.user_id = params['user_id'];
     });
@@ -122,7 +127,7 @@ export class CallbackComponent implements OnInit {
   callback(): void {
 
     this.clicked = true;
-
+    console.log(this.pagamento);
     var end = [{
       'rua': this.pedidoForm.get('rua').value,
       'bairro': this.pedidoForm.get('bairro').value,
@@ -201,7 +206,7 @@ export class CallbackComponent implements OnInit {
         "produtos": produtos,
         "endereco": endereco,
         "contato": contato,
-        "complemento": complemento
+        "complemento": complemento + " - PAGAMENTO: " + this.pagamento
       }
 
       //normal user
@@ -239,7 +244,7 @@ export class CallbackComponent implements OnInit {
             "produtos": produtos,
             "endereco": endereco,
             "contato": contato,
-            "complemento": complemento
+            "complemento": complemento + " - " + "PAGAMENTO: " + this.pagamento
           }
 
           this._pedidos.addPedido(data).subscribe(

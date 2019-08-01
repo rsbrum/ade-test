@@ -32,7 +32,7 @@
         <textarea formControlName="complemento"class="form-control " rows="4" cols="50" placeholder="Pizza sem tomate, sem maionese..."></textarea>
       </div>
 
-      <p>Escolha o tipo de entrega</p>
+      <p class="font-weight-bold">Escolha o tipo de entrega</p>
 
       <div class="mb-3" style="text-align: start;">
         <!--           <mat-radio-group aria-label="Select an option">
@@ -56,6 +56,24 @@
         </div>
         <div><input (click)="setTele()" type="checkbox" class="form-check-input"> <span>Tele-entrega (+ R$ 8,00)</span>
         </div> -->
+      </div>
+
+      <div class="form-group text-left" *ngIf="local">
+          <label>Contato</label>
+          <!-- <input class="form-control" placeholder="(54) 996523519" formControlName="contato"> -->
+          <form action="" [formGroup]="localForm">
+            <input class="form-control" [textMask]="{mask: mask, placeholderChar: '\u2000'}" placeholder="54 9 99999999" formControlName="contato"
+              [(ngModel)]="myModel" type="text" />
+          </form>
+        </div>
+
+      <p class="font-weight-bold">Escolha a forma de pagamento</p>
+
+      <div class="mb-3" style="text-align: start;">
+
+        <select class="form-control" [(ngModel)]="pagamento">
+          <option *ngFor="let pag of formaPagamento" [value]="pag" >{{pag}}</option>
+        </select>
       </div>
 
       <div *ngIf="show_tele_error" class='alert alert-danger mt-3'>
@@ -100,14 +118,7 @@
         <p>Preencha todos os campos!</p>
       </div>
 
-      <div class="form-group text-left" *ngIf="local">
-        <label>Contato</label>
-        <!-- <input class="form-control" placeholder="(54) 996523519" formControlName="contato"> -->
-        <form action="" [formGroup]="localForm">
-          <input class="form-control" [textMask]="{mask: mask, placeholderChar: '\u2000'}" placeholder="54 9 99999999" formControlName="contato"
-            [(ngModel)]="myModel" type="text" />
-        </form>
-      </div>
+
 
       <button *ngIf="!clicked" (click)="callback()" [disabled]="!local && !entrega"
         class="btn mt-2 shadow d-block m-auto bg-dark"
