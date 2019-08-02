@@ -20,6 +20,12 @@ export class OpcionalModalComponent implements OnInit {
   adicional_display;
   quantidade = 1;
   sabores_error = false;
+  meiaBorda = [];
+  bordaInteira = [];
+  showMeia: Boolean = false;
+  showInteira: Boolean = false;
+  meiaBordaPedido = [];
+  bordaInteiraPedido;
 
   constructor(
     public _cartService: CartService,
@@ -43,20 +49,91 @@ export class OpcionalModalComponent implements OnInit {
 
     this.getSabores();
     this.getOpcionais();
-    console.log(this.opcionais);
+
+  }
+
+  filterBordas() {
+    var regex = /meia borda/;
+
+    this.opcionais.forEach( elm => {
+      if(regex.test(elm["nome"].toLowerCase())){
+        this.meiaBorda.push(elm);
+      }
+    });
+
+
+    console.log(this.opcionais)
+    this.opcionais.forEach( elm => {
+      if(elm["nome"].toLowerCase().includes('borda') && !elm["nome"].toLowerCase().includes('meia')){
+        this.bordaInteira.push(elm);
+      }
+    });
+
+  }
+
+  filterOpcionais() {
+
+    for(var x = 0; x < this.opcionais.length; x++) {
+      for(var y = 0; y < this.meiaBorda.length; y++) {
+        if(this.meiaBorda[y]['nome'].toLowerCase() == this.opcionais[x]['nome'].toLowerCase()) {
+          this.opcionais.splice(x, 1)
+        }
+      }
+    }
+
+    for(var x = 0; x < this.opcionais.length; x++) {
+      for(var y = 0; y < this.bordaInteira.length; y++) {
+        if(this.bordaInteira[y]['nome'].toLowerCase() == this.opcionais[x]['nome'].toLowerCase()) {
+          this.opcionais.splice(x, 1)
+        }
+      }
+    }
+
+  }
+
+  selectBordas(value) {
+
+    if(value == 'meia') {
+      this.showMeia = true;
+      this.showInteira = false;
+    }
+
+    if(value == 'inteira') {
+      this.showInteira = true;
+      this.showMeia = false;
+    }
+
+  }
+
+  selectBordaInteira(borda) {
+    this.bordaInteiraPedido = borda;
+    this.updateOpcionalAdicional();
+  }
+
+  selectMeiaBorda(borda, index) {
+    this.meiaBordaPedido[index] = borda;
+    this.updateOpcionalAdicional();
   }
 
   updateOpcionalAdicional() {
     this.adicional = 0.0;
+
+
+    if(this.showMeia) {
+      this.meiaBordaPedido.forEach(elm => {
+        this.adicional += parseFloat(elm['adicional']);
+      });
+    }
+
+    if(this.showInteira) {
+      this.adicional += parseFloat(this.bordaInteiraPedido['adicional']);
+    }
+
     this.opcionais_pedido.forEach( opcional => {
       this.adicional += parseFloat(opcional['adicional']);
     })
 
     this.adicional_display = this.adicional.toFixed(2).replace('.', ',');
-
-  }
-
-  removeMeiaBorda() {
 
   }
 
@@ -75,7 +152,19 @@ export class OpcionalModalComponent implements OnInit {
   }
 
   addToCart(): void {
-    console.log(this.sabores_pedido);
+
+    if(this.showMeia) {
+      this.meiaBordaPedido.forEach(elm => {
+        this.opcionais_pedido.push(elm);
+      });
+    }
+
+    if(this.showInteira) {
+      this.opcionais_pedido.push(this.bordaInteiraPedido);
+    }
+
+    console.log(this.opcionais_pedido);
+
     if(this.sabores_pedido.length > 0 ) {
       this.data["sabores_info"] = this.sabores_pedido;
       this.data["opcionais_info"] = this.opcionais_pedido;
@@ -97,11 +186,7 @@ export class OpcionalModalComponent implements OnInit {
       } else {
         this.sabores_error = true;
       }
-
-
     }
-
-
 
   }
 
@@ -130,6 +215,8 @@ export class OpcionalModalComponent implements OnInit {
     this._opcionais.getOpcional(this.data.id).subscribe(
       res => {
         this.opcionais = res["opcionais"];
+        this.filterBordas();
+        this.filterOpcionais();
 
         if(this.data.quantidade_sabores == '1') {
           var regex = /meia/;
@@ -152,9 +239,8 @@ export class OpcionalModalComponent implements OnInit {
     )
   }
 
-  selectSabor(ev) {
-
-    this.sabores_pedido.push(ev);
+  selectSabor(ev, index) {
+    this.sabores_pedido[index] = ev;
   }
 
 }

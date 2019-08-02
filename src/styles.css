@@ -36,6 +36,7 @@ a:hover {
 }
 
 .opcional-modal .mat-dialog-container {
+  margin-top: 85px;
   height:auto !important;
 }
 

@@ -8,15 +8,78 @@
 
   <div *ngIf="data.sabores" class="row">
     <div *ngFor="let saborRow of sabor_quantidade; let i=index" class="col-12 col-sm-12 col-md-12 col-lg-12">
-      <label for="">Sabor {{i + 1}}</label>
-      <select ngModel (ngModelChange)="selectSabor($event)" class="form-control">
+      <label class="p-1"for="">Sabor {{i + 1}}</label>
+      <select ngModel (ngModelChange)="selectSabor($event, i)" class="form-control">
         <option value="" selected disabled hidden>Escolha um sabor</option>
-        <option *ngFor="let sabor of sabores" [ngValue]="sabor" >
+        <option *ngFor="let sabor of sabores" [ngValue]="sabor">
           {{sabor.codigo}} {{sabor.nome}} -
           <span style="font-weight: bold !important;">{{sabor.descricao}}</span>
         </option>
       </select>
     </div>
+  </div>
+
+  <div class="row mt-2">
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12" *ngIf="bordaInteira.length > 0">
+      <div class="row">
+        <h3 class="col-12 pt-1 pb-1">Bordas</h3>
+      </div>
+
+      <select ngModel (ngModelChange)="selectBordas($event)" class="form-control ">
+        <option value="" selected disabled hidden>Escolha um tipo de borda</option>
+        <option ngValue="inteira">
+          Borda inteira
+        </option>
+        <option ngValue="meia">
+          Meia borda
+        </option>
+      </select>
+    </div>
+
+    <div class="col-12 mt-2" *ngIf="showInteira">
+      <div class="row">
+        <div class="col-12">
+          <p class="font-weight-bold my-1">Sabor da borda</p>
+        </div>
+      </div>
+
+      <select ngModel (ngModelChange)="selectBordaInteira($event)" class="form-control ">
+        <option value="" selected disabled hidden>Escolha o sabor da borda</option>
+        <option *ngFor="let sabor of bordaInteira" [ngValue]="sabor">
+          {{sabor.nome}} - R$ {{sabor.adicional}}
+        </option>
+      </select>
+    </div>
+
+    <div class="col-12 mt-2" *ngIf="showMeia">
+      <div class="row">
+        <div class="col-12">
+          <p class="font-weight-bold my-1">Sabor da meia-borda 1</p>
+        </div>
+      </div>
+
+      <select ngModel (ngModelChange)="selectMeiaBorda($event, 0)" class="form-control ">
+        <option value="" selected disabled hidden>Escolha o sabor da borda</option>
+        <option *ngFor="let sabor of meiaBorda" [ngValue]="sabor">
+          {{sabor.nome}} - R$ {{sabor.adicional}}
+        </option>
+      </select>
+
+      <div class="row">
+        <div class="col-12">
+          <p class="font-weight-bold my-1">Sabor da meia-borda 2</p>
+        </div>
+      </div>
+
+      <select ngModel (ngModelChange)="selectMeiaBorda($event, 1)" class="form-control ">
+        <option value="" selected disabled hidden>Escolha o sabor da borda</option>
+        <option *ngFor="let sabor of meiaBorda" [ngValue]="sabor">
+          {{sabor.nome}} - R$ {{sabor.adicional}}
+        </option>
+      </select>
+    </div>
+
   </div>
 
   <div *ngIf="data.opcional" class="row mt-2">

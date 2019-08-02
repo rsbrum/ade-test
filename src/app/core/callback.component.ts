@@ -147,6 +147,7 @@ export class CallbackComponent implements OnInit {
     var endereco = "";
     var contato = "";
     var complemento = this.complementoForm.get('complemento').value;
+    var pagamento = this.pagamento;
 
 /*     produtos.forEach(element => {
       value += parseFloat(element.preco);
@@ -206,7 +207,8 @@ export class CallbackComponent implements OnInit {
         "produtos": produtos,
         "endereco": endereco,
         "contato": contato,
-        "complemento": complemento + " - PAGAMENTO: " + this.pagamento
+        "complemento": complemento + " - PAGAMENTO: " + this.pagamento,
+        "pagamento": pagamento
       }
 
       //normal user
@@ -244,7 +246,8 @@ export class CallbackComponent implements OnInit {
             "produtos": produtos,
             "endereco": endereco,
             "contato": contato,
-            "complemento": complemento + " - " + "PAGAMENTO: " + this.pagamento
+            "complemento": complemento + " - " + "PAGAMENTO: " + this.pagamento,
+            "pagamento": pagamento
           }
 
           this._pedidos.addPedido(data).subscribe(
