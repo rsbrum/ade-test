@@ -207,7 +207,7 @@ export class CallbackComponent implements OnInit {
         "produtos": produtos,
         "endereco": endereco,
         "contato": contato,
-        "complemento": complemento + " - PAGAMENTO: " + this.pagamento,
+        "complemento": complemento,
         "pagamento": pagamento
       }
 
@@ -246,7 +246,7 @@ export class CallbackComponent implements OnInit {
             "produtos": produtos,
             "endereco": endereco,
             "contato": contato,
-            "complemento": complemento + " - " + "PAGAMENTO: " + this.pagamento,
+            "complemento": complemento,
             "pagamento": pagamento
           }
 
