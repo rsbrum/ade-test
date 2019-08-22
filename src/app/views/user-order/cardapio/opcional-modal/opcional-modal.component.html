@@ -34,6 +34,9 @@
         <option ngValue="meia">
           Meia borda
         </option>
+        <option ngValue="nenhum">
+          Nenhuma
+        </option>
       </select>
     </div>
 
@@ -106,6 +109,10 @@
   <div class="row mt-2 mb-n">
     <div *ngIf="sabores_error" class="col-12 alert alert-danger text-center">
       <p>Escolha os sabores!</p>
+    </div>
+
+    <div *ngIf="bordaError" class="col-12 alert alert-danger text-center">
+      <p>Verifique se as bordas foram escolhidas corretamente!</p>
     </div>
   </div>
 

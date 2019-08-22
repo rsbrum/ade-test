@@ -26,6 +26,9 @@ export class OpcionalModalComponent implements OnInit {
   showInteira: Boolean = false;
   meiaBordaPedido = [];
   bordaInteiraPedido;
+  nenhumaBorda = false;
+  bordaError = false;
+
 
   constructor(
     public _cartService: CartService,
@@ -103,6 +106,9 @@ export class OpcionalModalComponent implements OnInit {
       this.showMeia = false;
     }
 
+    if(value == 'nenhum') {
+      this.nenhumaBorda = true;
+    }
   }
 
   selectBordaInteira(borda) {
@@ -128,6 +134,8 @@ export class OpcionalModalComponent implements OnInit {
     if(this.showInteira) {
       this.adicional += parseFloat(this.bordaInteiraPedido['adicional']);
     }
+
+
 
     this.opcionais_pedido.forEach( opcional => {
       this.adicional += parseFloat(opcional['adicional']);
@@ -157,15 +165,33 @@ export class OpcionalModalComponent implements OnInit {
       this.meiaBordaPedido.forEach(elm => {
         this.opcionais_pedido.push(elm);
       });
+
+      if(this.meiaBordaPedido.length == 0 && !this.nenhumaBorda) {
+        this.bordaError = true;
+      } else {
+        this.bordaError = false;
+      }
     }
 
     if(this.showInteira) {
       this.opcionais_pedido.push(this.bordaInteiraPedido);
+
+      if(!this.bordaInteiraPedido && !this.nenhumaBorda) {
+        this.bordaError = true;
+      } else {
+        this.bordaError = false;
+      }
     }
 
-    console.log(this.opcionais_pedido);
+    if(!this.showInteira && !this.showMeia && !this.nenhumaBorda) {
+      this.bordaError = true;
+    }
 
-    if(this.sabores_pedido.length > 0 ) {
+    if(this.data.sabores == 0) {
+      if(this.bordaError) {
+        return;
+      }
+
       this.data["sabores_info"] = this.sabores_pedido;
       this.data["opcionais_info"] = this.opcionais_pedido;
       this.data["preco"] = parseFloat(this.data["preco"]) + this.adicional;
@@ -173,19 +199,25 @@ export class OpcionalModalComponent implements OnInit {
       this._cartService.addItem(this.data);
       this.updateCartHeader();
       this.dialogRef.close('success');
-    } else {
+      return;
 
-      if(this.data.sabores == 0) {
-        this.data["sabores_info"] = this.sabores_pedido;
-        this.data["opcionais_info"] = this.opcionais_pedido;
-        this.data["preco"] = parseFloat(this.data["preco"]) + this.adicional;
-        this.data["quantidade"] = this.quantidade;
-        this._cartService.addItem(this.data);
-        this.updateCartHeader();
-        this.dialogRef.close('success');
-      } else {
-        this.sabores_error = true;
+    }
+
+    if(this.sabores_pedido.length > 0 ) {
+      if(this.bordaError) {
+        return;
       }
+
+      this.data["sabores_info"] = this.sabores_pedido;
+      this.data["opcionais_info"] = this.opcionais_pedido;
+      this.data["preco"] = parseFloat(this.data["preco"]) + this.adicional;
+      this.data["quantidade"] = this.quantidade;
+      this._cartService.addItem(this.data);
+      this.updateCartHeader();
+      this.dialogRef.close('success');
+      return;
+    } else {
+        this.sabores_error = true;
     }
 
   }
