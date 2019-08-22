@@ -166,7 +166,7 @@ export class OpcionalModalComponent implements OnInit {
         this.opcionais_pedido.push(elm);
       });
 
-      if(this.meiaBordaPedido.length == 0 && !this.nenhumaBorda) {
+      if(this.meiaBordaPedido.length < 2 && !this.nenhumaBorda) {
         this.bordaError = true;
       } else {
         this.bordaError = false;
