@@ -108,6 +108,8 @@ export class OpcionalModalComponent implements OnInit {
 
     if(value == 'nenhum') {
       this.nenhumaBorda = true;
+      this.showInteira = false;
+      this.showMeia = false;
     }
   }
 
@@ -134,8 +136,6 @@ export class OpcionalModalComponent implements OnInit {
     if(this.showInteira) {
       this.adicional += parseFloat(this.bordaInteiraPedido['adicional']);
     }
-
-
 
     this.opcionais_pedido.forEach( opcional => {
       this.adicional += parseFloat(opcional['adicional']);
@@ -212,7 +212,7 @@ export class OpcionalModalComponent implements OnInit {
 
       console.log(this.sabores_pedido.length, this.data.quantidade_sabores);
 
-      if(this.sabores_pedido.length < this.data.quantidade_sabores || this.sabores_pedido.length == 0) {
+      if(this.sabores_pedido.length == 0) {
         this.sabores_error = true;
         return;
       }

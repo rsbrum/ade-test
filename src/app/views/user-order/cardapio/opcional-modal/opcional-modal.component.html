@@ -7,6 +7,10 @@
   </div>
 
   <div *ngIf="data.sabores" class="row">
+    <div class="col-12">
+      <p class="font-weight-bold">AVISO:</p>
+      <p class="font-italic">Escolha no mínimo um sabor!</p>
+    </div>
     <div *ngFor="let saborRow of sabor_quantidade; let i=index" class="col-12 col-sm-12 col-md-12 col-lg-12">
       <label class="p-1"for="">Sabor {{i + 1}}</label>
       <select ngModel (ngModelChange)="selectSabor($event, i)" class="form-control">
