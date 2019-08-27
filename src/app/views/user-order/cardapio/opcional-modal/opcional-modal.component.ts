@@ -161,6 +161,11 @@ export class OpcionalModalComponent implements OnInit {
 
   addToCart(): void {
 
+    console.log(this.bordaError, this.sabores_error, this.data.sabores);
+
+    this.bordaError = false;
+    this.sabores_error = false;
+
     if(this.showMeia) {
       this.meiaBordaPedido.forEach(elm => {
         this.opcionais_pedido.push(elm);
@@ -203,10 +208,19 @@ export class OpcionalModalComponent implements OnInit {
 
     }
 
-    if(this.sabores_pedido.length > 0 ) {
+    if(this.sabores_pedido.length > 0 || this.sabores_pedido.length == 0) {
+
+      console.log(this.sabores_pedido.length, this.data.quantidade_sabores);
+
+      if(this.sabores_pedido.length < this.data.quantidade_sabores || this.sabores_pedido.length == 0) {
+        this.sabores_error = true;
+        return;
+      }
+
       if(this.bordaError) {
         return;
       }
+
 
       this.data["sabores_info"] = this.sabores_pedido;
       this.data["opcionais_info"] = this.opcionais_pedido;
@@ -216,8 +230,6 @@ export class OpcionalModalComponent implements OnInit {
       this.updateCartHeader();
       this.dialogRef.close('success');
       return;
-    } else {
-        this.sabores_error = true;
     }
 
   }
