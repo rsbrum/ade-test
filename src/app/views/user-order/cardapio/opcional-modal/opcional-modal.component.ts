@@ -29,7 +29,6 @@ export class OpcionalModalComponent implements OnInit {
   nenhumaBorda = false;
   bordaError = false;
 
-
   constructor(
     public _cartService: CartService,
     public _opcionais: OpcionaisService,
@@ -193,9 +192,6 @@ export class OpcionalModalComponent implements OnInit {
     }
 
     if(this.data.sabores == 0) {
-      if(this.bordaError) {
-        return;
-      }
 
       this.data["sabores_info"] = this.sabores_pedido;
       this.data["opcionais_info"] = this.opcionais_pedido;
