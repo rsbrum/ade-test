@@ -29,7 +29,7 @@
     "bootstrap": "^4.3.1",
     "bootstrap4": "0.0.1-security",
     "core-js": "^2.5.4",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "path": "^0.12.7",
     "rxjs": "~6.5.2",
     "tslib": "^1.9.0",
